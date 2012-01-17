@@ -1,0 +1,23 @@
+A grammar pattern for the plugin controlling PowerPoint
+
+power point
+	[
+	open presentation
+		[
+		named
+			[
+			PresentationName *1 (dictation)
+			]
+		file
+			[
+			FileNumber *2 (dictation)
+			]
+		]
+	close presentation
+	next slide
+	previous slide
+	]
+
+Notes:
+*1 Given a mapping of presentation names and 
+*2 Given a numbered list of presentations.
