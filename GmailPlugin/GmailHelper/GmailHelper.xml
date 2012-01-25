@@ -152,6 +152,7 @@
             <param name="fromName"><c>/feed/entry/author/name</c> property</param>
             <param name="fromEmail"><c>/feed/entry/author/email</c> property</param>
             <param name="id"><c>/feed/entry/id</c> property</param>
+            <param name="link"><c>/feed/entry/link/</c> property <c>href</c> field</param>
             <param name="received"><c>/feed/entry/issued</c> property</param>
         </member>
         <member name="P:RC.Gmail.GmailAtomFeed.AtomFeedEntry.Subject">

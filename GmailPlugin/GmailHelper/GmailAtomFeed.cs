@@ -9,6 +9,7 @@ namespace RC.Gmail
 
 	/// <summary>
 	/// Provides an easy method of retreiving and programming against gmail atom feeds.
+    /// Based on http://archive.msdn.microsoft.com/CSharpGmail and further refined.
 	/// </summary>
 	public class GmailAtomFeed
 	{
@@ -238,6 +239,7 @@ namespace RC.Gmail
 			/// <param name="fromName"><c>/feed/entry/author/name</c> property</param>
 			/// <param name="fromEmail"><c>/feed/entry/author/email</c> property</param>
 			/// <param name="id"><c>/feed/entry/id</c> property</param>
+            /// <param name="link"><c>/feed/entry/link/</c> property <c>href</c> field</param>
 			/// <param name="received"><c>/feed/entry/issued</c> property</param>
 			public AtomFeedEntry( string subject, string summary, string fromName, string fromEmail, string id, string link, DateTime received) 
 			{
