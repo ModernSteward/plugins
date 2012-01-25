@@ -1,0 +1,247 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GmailHelper</name>
+    </assembly>
+    <members>
+        <member name="T:RC.Gmail.GmailMessage">
+            <summary>
+            Provides a message object that sends the email through gmail. 
+            GmailMessage is inherited from <c>System.Web.Mail.MailMessage</c>, so all the mail message features are available.
+            </summary>
+        </member>
+        <member name="M:RC.Gmail.GmailMessage.#ctor(System.String,System.String)">
+            <summary>
+            Constructor, creates the GmailMessage object
+            </summary>
+            <param name="gmailUserName">The username of the gmail account that the message will be sent through</param>
+            <param name="gmailPassword">The password of the gmail account that the message will be sent through</param>
+        </member>
+        <member name="M:RC.Gmail.GmailMessage.Send">
+            <summary>
+            Sends the message. If no from address is given the message will be from <c>GmailUserName</c>@Gmail.com
+            </summary>
+        </member>
+        <member name="M:RC.Gmail.GmailMessage.SendMailMessageFromGmail(System.String,System.String,System.Web.Mail.MailMessage)">
+            <summary>
+            Send a <c>System.Web.Mail.MailMessage</c> through the specified gmail account
+            </summary>
+            <param name="gmailUserName">The username of the gmail account that the message will be sent through</param>
+            <param name="gmailPassword">The password of the gmail account that the message will be sent through</param>
+            <param name="message"><c>System.Web.Mail.MailMessage</c> object to send</param>
+        </member>
+        <member name="M:RC.Gmail.GmailMessage.SendFromGmail(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Sends an email through the specified gmail account
+            </summary>
+            <param name="gmailUserName">The username of the gmail account that the message will be sent through</param>
+            <param name="gmailPassword">The password of the gmail account that the message will be sent through</param>
+            <param name="toAddress">Recipients email address</param>
+            <param name="subject">Message subject</param>
+            <param name="messageBody">Message body</param>
+        </member>
+        <member name="P:RC.Gmail.GmailMessage.GmailUserName">
+            <summary>
+            The username of the gmail account that the message will be sent through
+            </summary>
+        </member>
+        <member name="P:RC.Gmail.GmailMessage.GmailPassword">
+            <summary>
+            The password of the gmail account that the message will be sent through
+            </summary>
+        </member>
+        <member name="P:RC.Gmail.GmailMessage.GmailServer">
+            <summary>
+            The name of the gmail server, the default is "smtp.gmail.com"
+            </summary>
+        </member>
+        <member name="P:RC.Gmail.GmailMessage.GmailServerPort">
+            <summary>
+            The port to use when sending the email, the default is 465
+            </summary>
+        </member>
+        <member name="T:RC.Gmail.GmailAtomFeed">
+            <summary>
+            Provides an easy method of retreiving and programming against gmail atom feeds.
+            </summary>
+        </member>
+        <member name="M:RC.Gmail.GmailAtomFeed.#ctor(System.String,System.String)">
+            <summary>
+            Constructor, creates the gmail atom feed object. 
+            <note>
+            Creating the object does not get the feed, the <c>GetFeed</c> method must be called to get the current feed.
+            </note>
+            </summary>
+            <param name="gmailUserName">The username of the gmail account that the message will be sent through</param>
+            <param name="gmailPassword">The password of the gmail account that the message will be sent through</param>
+        </member>
+        <member name="M:RC.Gmail.GmailAtomFeed.GetFeed">
+            <summary>
+            Gets the current atom feed for the specified account and loads all properties and collections with the feed data. Any existing data will be replaced by the new feed.
+            <note>
+            If the <c>FeedLabel</c> property equals <c>string.Empty</c> the feed for the inbox will be retreived.
+            </note>
+            </summary>
+        </member>
+        <member name="M:RC.Gmail.GmailAtomFeed.loadFeedEntries">
+            <summary>
+            Loads the <c>FeedEntries</c> collection from the data retreived in the feed.
+            </summary>
+        </member>
+        <member name="P:RC.Gmail.GmailAtomFeed.FeedEntries">
+            <summary>
+            Collection containing the feeds entry objects
+            </summary>
+        </member>
+        <member name="P:RC.Gmail.GmailAtomFeed.GmailUserName">
+            <summary>
+            The username of the gmail account that the message will be sent through
+            </summary>
+        </member>
+        <member name="P:RC.Gmail.GmailAtomFeed.GmailPassword">
+            <summary>
+            The password of the gmail account that the message will be sent through
+            </summary>
+        </member>
+        <member name="P:RC.Gmail.GmailAtomFeed.FeedLabel">
+            <summary>
+            The label to retreive the feeds from. To get the new inbox messages set this to <c>string.Empty</c>.
+            </summary>
+        </member>
+        <member name="P:RC.Gmail.GmailAtomFeed.FeedXml">
+            <summary>
+            Returns the feed data retreived from gmail
+            </summary>
+        </member>
+        <member name="P:RC.Gmail.GmailAtomFeed.RawFeed">
+            <summary>
+            Returns the feed data retreived from gmail
+            </summary>
+        </member>
+        <member name="P:RC.Gmail.GmailAtomFeed.Message">
+            <summary>
+            Returns the <c>/feed/tagline</c> property
+            </summary>
+        </member>
+        <member name="P:RC.Gmail.GmailAtomFeed.Title">
+            <summary>
+            Returns the <c>/feed/title</c> property
+            </summary>
+        </member>
+        <member name="P:RC.Gmail.GmailAtomFeed.Modified">
+            <summary>
+            Returns the <c>/feed/modified</c> property
+            </summary>
+        </member>
+        <member name="P:RC.Gmail.GmailAtomFeed.FeedUrl">
+            <summary>
+            Base Url for the gmail atom feed, the default is "https://gmail.google.com/gmail/feed/atom"
+            </summary>
+        </member>
+        <member name="T:RC.Gmail.GmailAtomFeed.AtomFeedEntry">
+            <summary>
+            Class for storing the <c>/feed/entry</c> items
+            </summary>
+        </member>
+        <member name="M:RC.Gmail.GmailAtomFeed.AtomFeedEntry.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.DateTime)">
+            <summary>
+            Constructor, loads the object
+            </summary>
+            <param name="subject"><c>/feed/entry/title</c> property</param>
+            <param name="summary"><c>/feed/entry/summary</c> property</param>
+            <param name="fromName"><c>/feed/entry/author/name</c> property</param>
+            <param name="fromEmail"><c>/feed/entry/author/email</c> property</param>
+            <param name="id"><c>/feed/entry/id</c> property</param>
+            <param name="received"><c>/feed/entry/issued</c> property</param>
+        </member>
+        <member name="P:RC.Gmail.GmailAtomFeed.AtomFeedEntry.Subject">
+            <summary>
+            Returns the <c>/feed/entry/title</c> property
+            </summary>
+        </member>
+        <member name="P:RC.Gmail.GmailAtomFeed.AtomFeedEntry.Summary">
+            <summary>
+            Returns the <c>/feed/entry/summary</c> property
+            </summary>
+        </member>
+        <member name="P:RC.Gmail.GmailAtomFeed.AtomFeedEntry.FromName">
+            <summary>
+            Returns the <c>/feed/entry/author/name</c> property
+            </summary>
+        </member>
+        <member name="P:RC.Gmail.GmailAtomFeed.AtomFeedEntry.FromEmail">
+            <summary>
+            Returns the <c>/feed/entry/author/email</c> property
+            </summary>
+        </member>
+        <member name="P:RC.Gmail.GmailAtomFeed.AtomFeedEntry.Id">
+            <summary>
+            Returns the <c>/feed/entry/id</c> property
+            </summary>
+        </member>
+        <member name="P:RC.Gmail.GmailAtomFeed.AtomFeedEntry.Link">
+            <summary>
+            Returns the <c>/feed/entry/link/href</c> value
+            </summary>
+        </member>
+        <member name="P:RC.Gmail.GmailAtomFeed.AtomFeedEntry.Received">
+            <summary>
+            Returns the <c>/feed/entry/issued</c> property
+            </summary>
+        </member>
+        <member name="T:RC.Gmail.GmailAtomFeed.AtomFeedEntryCollection">
+            <summary>
+            Collection of <c>AtomFeedEntry</c> objects
+            </summary>
+        </member>
+        <member name="M:RC.Gmail.GmailAtomFeed.AtomFeedEntryCollection.Add(RC.Gmail.GmailAtomFeed.AtomFeedEntry)">
+            <summary>
+            Adds an <c>AtomFeedEntry</c> object to the collection
+            </summary>
+            <param name="feedEntry"><c>AtomFeedEntry</c> to add</param>
+        </member>
+        <member name="M:RC.Gmail.GmailAtomFeed.AtomFeedEntryCollection.Clear">
+            <summary>
+            Clears the collection
+            </summary>
+        </member>
+        <member name="M:RC.Gmail.GmailAtomFeed.AtomFeedEntryCollection.Contains(RC.Gmail.GmailAtomFeed.AtomFeedEntry)">
+            <summary>
+            Returns true if the collection contains the specified object
+            </summary>
+            <param name="feedEntry"><c>AtomFeedEntry</c> to find</param>
+            <returns></returns>
+        </member>
+        <member name="M:RC.Gmail.GmailAtomFeed.AtomFeedEntryCollection.IndexOf(RC.Gmail.GmailAtomFeed.AtomFeedEntry)">
+            <summary>
+            Returns the position of the first of the <c>AtomFeedEntry</c> object. If it is not found then <c>-1</c> is returned.
+            </summary>
+            <param name="feedEntry"><c>AtomFeedEntry</c> to find</param>
+            <returns></returns>
+        </member>
+        <member name="M:RC.Gmail.GmailAtomFeed.AtomFeedEntryCollection.Insert(System.Int32,RC.Gmail.GmailAtomFeed.AtomFeedEntry)">
+            <summary>
+            Inserts an <c>AtomFeedEntry</c> at the specified position
+            </summary>
+            <param name="index">Position to insert at</param>
+            <param name="feedEntry"><c>AtomFeedEntry</c> to insert</param>
+        </member>
+        <member name="M:RC.Gmail.GmailAtomFeed.AtomFeedEntryCollection.Remove(RC.Gmail.GmailAtomFeed.AtomFeedEntry)">
+            <summary>
+            Removes an <c>AtomFeedEntry</c> from the collection
+            </summary>
+            <param name="feedEntry"><c>AtomFeedEntry</c> to be removed</param>
+        </member>
+        <member name="M:RC.Gmail.GmailAtomFeed.AtomFeedEntryCollection.RemoveAt(System.Int32)">
+            <summary>
+            Removes an <c>AtomFeedEntry</c> object from the specified position
+            </summary>
+            <param name="index">Position of <c>AtomFeedEntry</c> to be removed</param>
+        </member>
+        <member name="P:RC.Gmail.GmailAtomFeed.AtomFeedEntryCollection.Item(System.Int32)">
+            <summary>
+            Indexer for retreiving an <c>AtomFeedEntry</c> object
+            </summary>
+        </member>
+    </members>
+</doc>
