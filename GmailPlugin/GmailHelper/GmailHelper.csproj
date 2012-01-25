@@ -89,9 +89,6 @@
     <Compile Include="GmailAtomFeed.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GmailMessage.cs">
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
