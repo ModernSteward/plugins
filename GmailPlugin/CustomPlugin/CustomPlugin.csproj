@@ -36,19 +36,39 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Speech" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Telerik.WinControls">
+      <HintPath>..\..\..\ModernSteward\Libraries\Telerik.WinControls.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls.UI">
+      <HintPath>..\..\..\ModernSteward\Libraries\Telerik.WinControls.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="TelerikCommon">
+      <HintPath>..\..\..\ModernSteward\Libraries\TelerikCommon.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CredentialsAsk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CredentialsAsk.Designer.cs">
+      <DependentUpon>CredentialsAsk.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomPlugin.cs" />
     <Compile Include="GMailIntegration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CredentialsAsk.resx">
+      <DependentUpon>CredentialsAsk.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomPluginGrammar.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>

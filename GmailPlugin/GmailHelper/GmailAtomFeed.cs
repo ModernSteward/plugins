@@ -68,9 +68,10 @@ namespace RC.Gmail
 				}
 				
 				System.Net.NetworkCredential credentials = new NetworkCredential(this.GmailUserName, this.GmailPassword);
-			
+
 				WebRequest webRequest = WebRequest.Create(url);
 				webRequest.Credentials = credentials;
+                //webRequest.
 
                 WebResponse webResponse;
                 webResponse = webRequest.GetResponse();
