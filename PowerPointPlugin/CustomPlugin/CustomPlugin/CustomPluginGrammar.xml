@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TreeView xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" SpacingBetweenNodes="-1" LabelEdit="true" CausesValidation="true" BackColor="White">
+  <Nodes Name="CustomPlugin" Expanded="true" Text="power point">
+    <Nodes Name="New Node" Expanded="true" Text="open presentation">
+      <Nodes Name="New Node" Text="named">
+        <Nodes Name="New Node" Text="PresentationName">
+          <Tag xsi:type="xsd:string">dictation</Tag>
+        </Nodes>
+      </Nodes>
+      <Nodes Name="New Node" Text="file">
+        <Nodes Name="New Node" Text="FileNumber">
+          <Tag xsi:type="xsd:string">dictation</Tag>
+        </Nodes>
+      </Nodes>
+    </Nodes>
+    <Nodes Name="New Node" Text="next slide" />
+    <Nodes Name="New Node" Text="previous slide" />
+    <Nodes Name="New Node" Text="close presentation" />
+  </Nodes>
+</TreeView>
