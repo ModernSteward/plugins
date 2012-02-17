@@ -50,8 +50,9 @@ namespace RC.Gmail
 		/// <note>
 		/// If the <c>FeedLabel</c> property equals <c>string.Empty</c> the feed for the inbox will be retreived.
 		/// </note>
+        /// Returns wether login succeeded.
 		/// </summary>
-		public void GetFeed() 
+		public bool GetFeed() 
 		{
 			StringBuilder sBuilder	= new StringBuilder();
 			byte[] buffer	= new byte[8192];
@@ -74,8 +75,16 @@ namespace RC.Gmail
                 //webRequest.
 
                 WebResponse webResponse;
-                webResponse = webRequest.GetResponse();
-                
+                try
+                {
+                    webResponse = webRequest.GetResponse();
+                }
+                catch (WebException ex)
+                {
+                    //Assume login attempt failed.
+                    return false;
+                }
+
 				Stream stream = webResponse.GetResponseStream();
 
                 while ((byteCount = stream.Read(buffer, 0, buffer.Length)) > 0)
@@ -95,6 +104,9 @@ namespace RC.Gmail
 				//TODO: add error handling
 				throw ex;
 			}
+
+            //Login succeeded.
+            return true;
 		}
 
 

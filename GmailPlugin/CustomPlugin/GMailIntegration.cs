@@ -24,25 +24,17 @@ namespace ModernSteward
             this.mUsername = username;
             this.mPassword = password;
         }
+
+        public bool GetFeed()
+        {
+            mGMailFeed = new RC.Gmail.GmailAtomFeed(mUsername, mPassword);
+            return mGMailFeed.GetFeed();
+        }
+
         public int NewMessagesCount
         {
             get
             {
-                // Create the object and get the feed 
-                mGMailFeed = new RC.Gmail.GmailAtomFeed(mUsername, mPassword);
-                mGMailFeed.GetFeed();
-
-                // Access the feeds XmlDocument 
-                XmlDocument myXml = mGMailFeed.FeedXml;
-
-                // Access the raw feed as a string 
-                string feedString = mGMailFeed.RawFeed;
-                //Console.WriteLine(feedString);
-
-                // Access the feed through the object 
-                string feedTitle = mGMailFeed.Title;
-                string feedTagline = mGMailFeed.Message;
-                DateTime feedModified = mGMailFeed.Modified;
                 return mGMailFeed.FeedEntries.Count;
             }
         }
