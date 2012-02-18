@@ -39,7 +39,7 @@ namespace ModernSteward
         {
             //Custom initialization for your plugin
             CredentialForm = new CredentialsAsk();
-            Application.Run(CredentialForm);
+			CredentialForm.Show();
             this.GmailUsername = CredentialForm.GmailUsername;
             this.GmailPassword = CredentialForm.GmailPassword;
 
