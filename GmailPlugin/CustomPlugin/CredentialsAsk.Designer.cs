@@ -33,14 +33,14 @@
 			this.labelPassword = new Telerik.WinControls.UI.RadLabel();
 			this.buttonLogin = new Telerik.WinControls.UI.RadButton();
 			this.textBoxPassword = new Telerik.WinControls.UI.RadTextBox();
-			this.radGroupBox1 = new Telerik.WinControls.UI.RadGroupBox();
+			this.groupBoxAuth = new Telerik.WinControls.UI.RadGroupBox();
 			((System.ComponentModel.ISupportInitialize)(this.labelUsername)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.textBoxUsername)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.labelPassword)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.buttonLogin)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.textBoxPassword)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.radGroupBox1)).BeginInit();
-			this.radGroupBox1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.groupBoxAuth)).BeginInit();
+			this.groupBoxAuth.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -86,38 +86,39 @@
 			this.textBoxPassword.Size = new System.Drawing.Size(161, 20);
 			this.textBoxPassword.TabIndex = 3;
 			this.textBoxPassword.TabStop = false;
+			this.textBoxPassword.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxPassword_KeyUp);
 			// 
-			// radGroupBox1
+			// groupBoxAuth
 			// 
-			this.radGroupBox1.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
-			this.radGroupBox1.Controls.Add(this.buttonLogin);
-			this.radGroupBox1.Controls.Add(this.textBoxPassword);
-			this.radGroupBox1.Controls.Add(this.labelUsername);
-			this.radGroupBox1.Controls.Add(this.textBoxUsername);
-			this.radGroupBox1.Controls.Add(this.labelPassword);
-			this.radGroupBox1.FooterImageIndex = -1;
-			this.radGroupBox1.FooterImageKey = "";
-			this.radGroupBox1.HeaderImageIndex = -1;
-			this.radGroupBox1.HeaderImageKey = "";
-			this.radGroupBox1.HeaderMargin = new System.Windows.Forms.Padding(0);
-			this.radGroupBox1.HeaderText = "Оторизация";
-			this.radGroupBox1.Location = new System.Drawing.Point(12, 2);
-			this.radGroupBox1.Name = "radGroupBox1";
-			this.radGroupBox1.Padding = new System.Windows.Forms.Padding(2, 18, 2, 2);
+			this.groupBoxAuth.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
+			this.groupBoxAuth.Controls.Add(this.buttonLogin);
+			this.groupBoxAuth.Controls.Add(this.textBoxPassword);
+			this.groupBoxAuth.Controls.Add(this.labelUsername);
+			this.groupBoxAuth.Controls.Add(this.textBoxUsername);
+			this.groupBoxAuth.Controls.Add(this.labelPassword);
+			this.groupBoxAuth.FooterImageIndex = -1;
+			this.groupBoxAuth.FooterImageKey = "";
+			this.groupBoxAuth.HeaderImageIndex = -1;
+			this.groupBoxAuth.HeaderImageKey = "";
+			this.groupBoxAuth.HeaderMargin = new System.Windows.Forms.Padding(0);
+			this.groupBoxAuth.HeaderText = "Оторизация";
+			this.groupBoxAuth.Location = new System.Drawing.Point(12, 2);
+			this.groupBoxAuth.Name = "groupBoxAuth";
+			this.groupBoxAuth.Padding = new System.Windows.Forms.Padding(2, 18, 2, 2);
 			// 
 			// 
 			// 
-			this.radGroupBox1.RootElement.Padding = new System.Windows.Forms.Padding(2, 18, 2, 2);
-			this.radGroupBox1.Size = new System.Drawing.Size(340, 104);
-			this.radGroupBox1.TabIndex = 0;
-			this.radGroupBox1.Text = "Оторизация";
+			this.groupBoxAuth.RootElement.Padding = new System.Windows.Forms.Padding(2, 18, 2, 2);
+			this.groupBoxAuth.Size = new System.Drawing.Size(340, 104);
+			this.groupBoxAuth.TabIndex = 0;
+			this.groupBoxAuth.Text = "Оторизация";
 			// 
 			// CredentialsAsk
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(366, 111);
-			this.Controls.Add(this.radGroupBox1);
+			this.Controls.Add(this.groupBoxAuth);
 			this.Name = "CredentialsAsk";
 			// 
 			// 
@@ -130,9 +131,9 @@
 			((System.ComponentModel.ISupportInitialize)(this.labelPassword)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.buttonLogin)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.textBoxPassword)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.radGroupBox1)).EndInit();
-			this.radGroupBox1.ResumeLayout(false);
-			this.radGroupBox1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.groupBoxAuth)).EndInit();
+			this.groupBoxAuth.ResumeLayout(false);
+			this.groupBoxAuth.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 			this.ResumeLayout(false);
 
@@ -145,6 +146,6 @@
         private Telerik.WinControls.UI.RadLabel labelPassword;
         private Telerik.WinControls.UI.RadButton buttonLogin;
         private Telerik.WinControls.UI.RadTextBox textBoxPassword;
-		private Telerik.WinControls.UI.RadGroupBox radGroupBox1;
+		private Telerik.WinControls.UI.RadGroupBox groupBoxAuth;
     }
 }
