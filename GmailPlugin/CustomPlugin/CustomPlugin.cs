@@ -19,9 +19,14 @@ namespace ModernSteward
         public string GmailPassword = string.Empty;
         public override void Trigger(List<KeyValuePair<string, string>> semanticsToDict)
         {
-			if (semanticsToDict[0].Key == "check for new mail") {
-
+			try
+			{
+				if (semanticsToDict[0].Key == "check for new mail")
+				{
+					Application.Run(new ShowMessages(mail.Entries));
+				}
 			}
+			catch { }
         }
 
         public override GrammarBuilder GetGrammarBuilder()

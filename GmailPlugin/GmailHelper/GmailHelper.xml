@@ -26,6 +26,7 @@
             <note>
             If the <c>FeedLabel</c> property equals <c>string.Empty</c> the feed for the inbox will be retreived.
             </note>
+            Returns wether login succeeded.
             </summary>
         </member>
         <member name="M:RC.Gmail.GmailAtomFeed.loadFeedEntries">

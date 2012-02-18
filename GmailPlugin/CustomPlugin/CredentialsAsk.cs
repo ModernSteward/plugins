@@ -36,11 +36,11 @@ namespace ModernSteward
             }
         }
 
-        private void LoginButton_Click(object sender, EventArgs e)
-        {
-            this.mGmailUsername = this.UsernameBox.Text;
-            this.mGmailPassword = this.PasswordBox.Text;
-            this.Close();
-        }
+		private void buttonLogin_Click(object sender, EventArgs e)
+		{
+			this.mGmailUsername = this.textBoxUsername.Text;
+			this.mGmailPassword = this.textBoxPassword.Text;
+			this.Close();
+		}
     }
 }
