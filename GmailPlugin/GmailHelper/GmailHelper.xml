@@ -4,65 +4,10 @@
         <name>GmailHelper</name>
     </assembly>
     <members>
-        <member name="T:RC.Gmail.GmailMessage">
-            <summary>
-            Provides a message object that sends the email through gmail. 
-            GmailMessage is inherited from <c>System.Web.Mail.MailMessage</c>, so all the mail message features are available.
-            </summary>
-        </member>
-        <member name="M:RC.Gmail.GmailMessage.#ctor(System.String,System.String)">
-            <summary>
-            Constructor, creates the GmailMessage object
-            </summary>
-            <param name="gmailUserName">The username of the gmail account that the message will be sent through</param>
-            <param name="gmailPassword">The password of the gmail account that the message will be sent through</param>
-        </member>
-        <member name="M:RC.Gmail.GmailMessage.Send">
-            <summary>
-            Sends the message. If no from address is given the message will be from <c>GmailUserName</c>@Gmail.com
-            </summary>
-        </member>
-        <member name="M:RC.Gmail.GmailMessage.SendMailMessageFromGmail(System.String,System.String,System.Web.Mail.MailMessage)">
-            <summary>
-            Send a <c>System.Web.Mail.MailMessage</c> through the specified gmail account
-            </summary>
-            <param name="gmailUserName">The username of the gmail account that the message will be sent through</param>
-            <param name="gmailPassword">The password of the gmail account that the message will be sent through</param>
-            <param name="message"><c>System.Web.Mail.MailMessage</c> object to send</param>
-        </member>
-        <member name="M:RC.Gmail.GmailMessage.SendFromGmail(System.String,System.String,System.String,System.String,System.String)">
-            <summary>
-            Sends an email through the specified gmail account
-            </summary>
-            <param name="gmailUserName">The username of the gmail account that the message will be sent through</param>
-            <param name="gmailPassword">The password of the gmail account that the message will be sent through</param>
-            <param name="toAddress">Recipients email address</param>
-            <param name="subject">Message subject</param>
-            <param name="messageBody">Message body</param>
-        </member>
-        <member name="P:RC.Gmail.GmailMessage.GmailUserName">
-            <summary>
-            The username of the gmail account that the message will be sent through
-            </summary>
-        </member>
-        <member name="P:RC.Gmail.GmailMessage.GmailPassword">
-            <summary>
-            The password of the gmail account that the message will be sent through
-            </summary>
-        </member>
-        <member name="P:RC.Gmail.GmailMessage.GmailServer">
-            <summary>
-            The name of the gmail server, the default is "smtp.gmail.com"
-            </summary>
-        </member>
-        <member name="P:RC.Gmail.GmailMessage.GmailServerPort">
-            <summary>
-            The port to use when sending the email, the default is 465
-            </summary>
-        </member>
         <member name="T:RC.Gmail.GmailAtomFeed">
             <summary>
             Provides an easy method of retreiving and programming against gmail atom feeds.
+            Based on http://archive.msdn.microsoft.com/CSharpGmail and further refined.
             </summary>
         </member>
         <member name="M:RC.Gmail.GmailAtomFeed.#ctor(System.String,System.String)">
@@ -81,6 +26,7 @@
             <note>
             If the <c>FeedLabel</c> property equals <c>string.Empty</c> the feed for the inbox will be retreived.
             </note>
+            Returns wether login succeeded.
             </summary>
         </member>
         <member name="M:RC.Gmail.GmailAtomFeed.loadFeedEntries">

@@ -55,9 +55,10 @@ namespace ModernSteward
             return ModernSteward.TreeViewToGrammarBuilderAlgorithm.CreateGrammarBuilderFromXML(stream);
         }
 
-        public override void Initialize()
+        public override bool Initialize()
         {
             //Custom initialization for your plugin
+            return true;
         }
     }
 }
