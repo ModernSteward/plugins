@@ -5,8 +5,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomPlugin", "CustomPlugi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GmailHelper", "GmailHelper\GmailHelper.csproj", "{98FCA5B5-8DEF-44E2-8DEC-ECFD0BCFDCF1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tester", "Tester\Tester.csproj", "{F7EA425A-3008-471A-9A34-7489DF5A8995}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,16 +35,6 @@ Global
 		{98FCA5B5-8DEF-44E2-8DEC-ECFD0BCFDCF1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{98FCA5B5-8DEF-44E2-8DEC-ECFD0BCFDCF1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{98FCA5B5-8DEF-44E2-8DEC-ECFD0BCFDCF1}.Release|x86.ActiveCfg = Release|Any CPU
-		{F7EA425A-3008-471A-9A34-7489DF5A8995}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{F7EA425A-3008-471A-9A34-7489DF5A8995}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{F7EA425A-3008-471A-9A34-7489DF5A8995}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{F7EA425A-3008-471A-9A34-7489DF5A8995}.Debug|x86.ActiveCfg = Debug|x86
-		{F7EA425A-3008-471A-9A34-7489DF5A8995}.Debug|x86.Build.0 = Debug|x86
-		{F7EA425A-3008-471A-9A34-7489DF5A8995}.Release|Any CPU.ActiveCfg = Release|x86
-		{F7EA425A-3008-471A-9A34-7489DF5A8995}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{F7EA425A-3008-471A-9A34-7489DF5A8995}.Release|Mixed Platforms.Build.0 = Release|x86
-		{F7EA425A-3008-471A-9A34-7489DF5A8995}.Release|x86.ActiveCfg = Release|x86
-		{F7EA425A-3008-471A-9A34-7489DF5A8995}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

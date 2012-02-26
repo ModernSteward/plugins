@@ -23,7 +23,9 @@ namespace ModernSteward
 			{
 				if (semanticsToDict[0].Key == "check for new mail")
 				{
-					Application.Run(new ShowMessages(mail.Entries));
+					//Application.Run(new ShowMessages(mail.Entries));
+                    ShowMessages messagesForm = new ShowMessages(mail.Entries);
+                    messagesForm.ShowDialog();
 				}
 			}
 			catch { }
@@ -39,7 +41,7 @@ namespace ModernSteward
         {
             //Custom initialization for your plugin
             CredentialForm = new CredentialsAsk();
-			CredentialForm.Show();
+			CredentialForm.ShowDialog();
             this.GmailUsername = CredentialForm.GmailUsername;
             this.GmailPassword = CredentialForm.GmailPassword;
 
