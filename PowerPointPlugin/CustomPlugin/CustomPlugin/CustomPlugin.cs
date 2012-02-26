@@ -13,6 +13,8 @@ namespace ModernSteward
     {
         private SlideshowManager slideshow;
 
+		private string PresentationFilePath;
+
         public override void Trigger(List<KeyValuePair<string, string>> semanticsToDict)
         {
 			if (semanticsToDict[0].Key == "power point")
@@ -69,7 +71,8 @@ namespace ModernSteward
 
         public override bool Initialize()
         {
-            //Custom initialization for your plugin
+			InitializationForm init = new InitializationForm();
+			init.Show();
             return true;
         }
     }
