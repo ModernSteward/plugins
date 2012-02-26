@@ -55,8 +55,16 @@ namespace ModernSteward
 
         public override GrammarBuilder GetGrammarBuilder()
         {
-            Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("ModernSteward.CustomPluginGrammar.xml");
-            return ModernSteward.TreeViewToGrammarBuilderAlgorithm.CreateGrammarBuilderFromXML(stream);
+            try
+            {
+                Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("ModernSteward.CustomPluginGrammar.xml");
+                return ModernSteward.TreeViewToGrammarBuilderAlgorithm.CreateGrammarBuilderFromXML(stream);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }
         }
 
         public override bool Initialize()
