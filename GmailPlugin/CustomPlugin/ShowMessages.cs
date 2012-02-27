@@ -46,9 +46,9 @@ namespace ModernSteward
 
 			try
 			{
-				for (int i = 0; i < aGMailFeed.Count - 1; i++)
+				for (int i = 0; i < aGMailFeed.Count; i++)
 				{
-					gridViewMessages.Rows.Add(i, aGMailFeed[i].Subject, aGMailFeed[i].FromEmail);
+					gridViewMessages.Rows.Add(i + 1, aGMailFeed[i].Subject, aGMailFeed[i].FromEmail);
 					gridViewMessages.Rows[gridViewMessages.Rows.Count - 1].Tag = aGMailFeed[i].Link;
 				}
 				labelNoNewMessages.Visible = false;

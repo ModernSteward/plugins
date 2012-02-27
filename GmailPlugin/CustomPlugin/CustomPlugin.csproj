@@ -71,6 +71,7 @@
       <DependentUpon>CredentialsAsk.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomPlugin.cs" />
+    <Compile Include="GmailHelper\GmailAtomFeed.cs" />
     <Compile Include="ShowMessages.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,12 +91,6 @@
     <EmbeddedResource Include="ShowMessages.resx">
       <DependentUpon>ShowMessages.cs</DependentUpon>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\GmailHelper\GmailHelper.csproj">
-      <Project>{98FCA5B5-8DEF-44E2-8DEC-ECFD0BCFDCF1}</Project>
-      <Name>GmailHelper</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

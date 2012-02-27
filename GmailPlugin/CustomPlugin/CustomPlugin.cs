@@ -25,7 +25,7 @@ namespace ModernSteward
 				{
 					//Application.Run(new ShowMessages(mail.Entries));
                     ShowMessages messagesForm = new ShowMessages(mail.Entries);
-                    messagesForm.ShowDialog();
+                    messagesForm.Show();
 				}
 			}
 			catch { }
