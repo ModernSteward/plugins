@@ -6,18 +6,16 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Telerik.WinControls;
-using ElectricityManager;
 
 namespace ModernSteward
 {
     public partial class InitializeForm : Telerik.WinControls.UI.RadForm
     {
-        ElectricityManager.ElectricityManager mElectricityManager;
-        public InitializeForm(ElectricityManager.ElectricityManager aElectricityManager)
+        public string selectedCOM = "COM4";
+
+        public InitializeForm()
         {
             InitializeComponent();
-
-            mElectricityManager = aElectricityManager;
 
             string com = "COM";
             for (int i = 1; i < 9; i++)
@@ -31,12 +29,10 @@ namespace ModernSteward
             bool toCloseTheForm = true;
             try
             {
-                mElectricityManager =
-                    new ElectricityManager.ElectricityManager(dropDownListPorts.SelectedText, true);
+                selectedCOM = "COM" + (dropDownListPorts.SelectedIndex+1).ToString();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Could not open the port! Message: " + ex.Message);
                 toCloseTheForm = false;
             }
             if (toCloseTheForm)

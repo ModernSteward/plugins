@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.IO.Ports;
 
-namespace ElectricityManager
+namespace ModernSteward
 {
-    public class ElectricityManager
+    class ElectricityManager
     {
         private SerialPort port;
 
@@ -42,8 +42,9 @@ namespace ElectricityManager
                 port.StopBits = StopBits.One;
                 port.Parity = Parity.None;
             }
-            catch
+            catch (Exception ex)
             {
+                //System.Windows.Forms.MessageBox.Show("wrong com port! or " + ex.Message);
                 throw new Exception("Wrong COM port!");
             }
 
@@ -87,19 +88,23 @@ namespace ElectricityManager
 
         public bool CloseThePort()
         {
-            if (port.IsOpen)
+            try
             {
-                try
+                if (port.IsOpen)
                 {
-                    port.Close();
-                    return true;
-                }
-                catch
-                {
-                    throw new Exception("Could not close the port!");
-                    return false;
+                    try
+                    {
+                        port.Close();
+                        return true;
+                    }
+                    catch
+                    {
+                        throw new Exception("Could not close the port!");
+                        return false;
+                    }
                 }
             }
+            catch { }
             return false;
         }
 
