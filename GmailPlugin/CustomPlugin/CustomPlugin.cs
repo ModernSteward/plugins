@@ -24,6 +24,7 @@ namespace ModernSteward
 				if (semanticsToDict[0].Key == "check for new mail")
 				{
 					//Application.Run(new ShowMessages(mail.Entries));
+                    mail.GetFeed();
                     ShowMessages messagesForm = new ShowMessages(mail.Entries);
                     messagesForm.Show();
 				}
