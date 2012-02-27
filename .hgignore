@@ -1,8 +1,10 @@
+syntax: glob
+*.dll
+*~
+*.pdb
+*.suo
 bin
 obj
-dll
-pdb
-syntax: glob
 GmailPlugin/CustomPlugin/bin/Debug/CustomPlugin.dll
 GmailPlugin/CustomPlugin/obj/Release/build.force
 GmailPlugin/CustomPlugin/obj/Release/ResolveAssemblyReference.cache
