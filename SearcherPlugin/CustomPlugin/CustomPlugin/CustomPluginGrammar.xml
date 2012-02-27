@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TreeView xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" SpacingBetweenNodes="-1" LabelEdit="true" CausesValidation="true" BackColor="White">
   <Nodes Name="CustomPlugin" Expanded="true" Text="search in">
+    <Nodes Name="New Node" Expanded="true" Text="movie database for">
+      <Nodes Name="New Node" Text="Keywords">
+        <Tag xsi:type="GrammarTreeViewTag">
+          <IsDictation>true</IsDictation>
+          <DictationContext />
+          <Optional>false</Optional>
+        </Tag>
+      </Nodes>
+      <Tag xsi:type="GrammarTreeViewTag">
+        <IsDictation>false</IsDictation>
+        <DictationContext />
+        <Optional>false</Optional>
+      </Tag>
+    </Nodes>
     <Nodes Name="New Node" Expanded="true" Text="google for">
       <Nodes Name="New Node" Text="Keywords">
         <Tag xsi:type="GrammarTreeViewTag">
@@ -16,20 +30,6 @@
       </Tag>
     </Nodes>
     <Nodes Name="New Node" Expanded="true" Text="wikipedia for">
-      <Nodes Name="New Node" Text="Keywords">
-        <Tag xsi:type="GrammarTreeViewTag">
-          <IsDictation>true</IsDictation>
-          <DictationContext />
-          <Optional>false</Optional>
-        </Tag>
-      </Nodes>
-      <Tag xsi:type="GrammarTreeViewTag">
-        <IsDictation>false</IsDictation>
-        <DictationContext />
-        <Optional>false</Optional>
-      </Tag>
-    </Nodes>
-    <Nodes Name="New Node" Expanded="true" Text="movie database for">
       <Nodes Name="New Node" Text="Keywords">
         <Tag xsi:type="GrammarTreeViewTag">
           <IsDictation>true</IsDictation>
