@@ -13,19 +13,6 @@ namespace ModernSteward
 {
 	public partial class ShowMessages : Telerik.WinControls.UI.RadForm
 	{
-		/// <summary>
-		/// Reads path of default browser from registry
-		/// </summary>
-		/// <returns></returns>
-		private static string GetDefaultBrowserPath()
-		{
-			string key = @"htmlfile\shell\open\command";
-			RegistryKey registryKey =
-			Registry.ClassesRoot.OpenSubKey(key, false);
-			// get default browser path
-			return ((string)registryKey.GetValue(null, null)).Split('"')[1];
-		}
-
 		public ShowMessages(bool anyNewMessages)
 		{
 			InitializeComponent();
@@ -43,6 +30,12 @@ namespace ModernSteward
 
 			gridViewMessages.MultiSelect = false;
 			gridViewMessages.SelectionMode = Telerik.WinControls.UI.GridViewSelectionMode.FullRowSelect;
+
+			gridViewMessages.EnableCustomGrouping = false;
+			gridViewMessages.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
+
+			gridViewMessages.AllowAutoSizeColumns = true;
+
 
 			try
 			{
@@ -65,7 +58,7 @@ namespace ModernSteward
 			try
 			{
 				string messageURL = e.Row.Tag.ToString();
-				Process.Start(GetDefaultBrowserPath(), messageURL);
+				System.Diagnostics.Process.Start(messageURL);
 			}
 			catch { }
 		}
