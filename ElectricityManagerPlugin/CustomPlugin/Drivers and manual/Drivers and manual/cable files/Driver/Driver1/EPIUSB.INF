@@ -1,0 +1,68 @@
+;; Epiusb.inf
+
+[Version]
+Signature="$CHICAGO$"
+Provider=%ProviderName%
+DriverVer = 10/24/2000,1.0.0.0
+
+; If device fits one of the standard classes, use the name and GUID here,
+; otherwise create your own device class and GUID as this example shows.
+
+Class=USB
+ClassGUID={36FC9E60-C465-11CF-8056-444553540000}
+
+[SourceDisksNames]
+1 = "",Disk1,,
+
+[SourceDisksFiles]
+Epiusb.sys = 1,,
+
+[DestinationDirs]
+Epiusb_Files_Driver = 10,System32\Drivers
+
+
+[Manufacturer]
+%MfgName%=Mfg0
+
+[Mfg0]
+%DeviceDesc%=Epiusb_DDI, USB\VID_0BDB&PID_100E
+
+
+;---------- DDInstall Sections -----------------------------------------------
+
+[Epiusb_DDI]
+CopyFiles=Epiusb_Files_Driver
+AddReg=Epiusb_9X_AddReg
+
+[Epiusb_9X_AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,Epiusb.sys
+
+; --------- Windows NT -----------------
+
+[Epiusb_DDI.NT]
+CopyFiles=Epiusb_Files_Driver
+
+[Epiusb_DDI.NT.Services]
+Addservice = Epiusb, 0x00000002, Epiusb_AddService
+
+[Epiusb_AddService]
+DisplayName    = %SvcDesc%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %10%\System32\Drivers\Epiusb.sys
+
+; --------- Files (common) -------------
+
+[Epiusb_Files_Driver]
+Epiusb.sys
+
+;--------- Strings Section ---------------------------------------------------
+
+[Strings]
+ProviderName="Ericsson"
+MfgName="Ericsson"
+DeviceDesc="USB Flash"
+;DeviceClassName="USB Flash"
+SvcDesc="USB Flash"

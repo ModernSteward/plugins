@@ -1,0 +1,269 @@
+;*****************************************************************************
+;
+; Name:  v800mdm2.inf
+;
+; Function:
+;	Install the Sony Ericsson V800-Vodafone 802SE USB WMC Modem Drivers on Win2000/XP
+;
+; Copyright (c) 1997-2004 MCCI
+;
+; MCCI is a registered trademark of Moore Computer Consultants, Inc
+;
+; NOTICE: This software is licensed, not sold.  Any modification of this
+; inf file to change the reference to an operating system or to change the
+; reference to a device is not permitted unless authorized in writing by
+; Moore Computer Consultants, Inc.
+;
+;*****************************************************************************
+
+[Version]
+signature="$WINDOWS NT$"
+Class=Modem
+ClassGuid={4d36e96d-e325-11ce-bfc1-08002be10318}
+Provider=%Provider%
+DriverVer=08/09/2004, 4.22.0.2700
+CatalogFile=v800mdm.cat
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[SourceDisksNames]
+; diskid = description[, [tagfile] [, <unused>, subdir]]
+1=%DiskString%,"v800mdm.sys",,
+
+[SourceDisksFiles]
+; filename = diskid[,[ subdir][, size]]
+v800mdm.sys = 1
+v800cmnt.sys = 1
+v800mdfl.sys = 1
+
+;-----------------------------------------------------------------------------
+; Specify target paths...
+;-----------------------------------------------------------------------------
+
+[DestinationDirs]
+DefaultDestDir = 12                    ; system32\drivers
+
+;-----------------------------------------------------------------------------
+; Table of Contents
+;-----------------------------------------------------------------------------
+[Manufacturer]
+%Sony Ericsson%=SEMCV800-V802SE
+
+;-----------------------------------------------------------------------------
+; Device-by-device entries
+;-----------------------------------------------------------------------------
+[SEMCV800-V802SE]
+%SEMCV800-V802SE.Modem.Desc% = SEMCV800-V802SE.Install, USB\VID_0FCE&PID_D008&MI_01&OS_NT
+%SEMCV800-V802SE.Modem.Desc.2% = SEMCV800-V802SE.Install, USB\VID_0FCE&PID_D008&MI_03&OS_NT
+
+;-----------------------------------------------------------------------------
+; Installation instructions
+;-----------------------------------------------------------------------------
+
+[SEMCV800-V802SE.Install.nt]
+AddReg = SEMCV800-V802SE.AddReg, SEMCV800-V802SE.NT.AddReg, GenericAddReg, USB
+CopyFiles	= CopyFiles, CopyFiles.Win2K
+
+
+;-----------------------------------------------------------------------------
+;  Registry
+;-----------------------------------------------------------------------------
+
+; common registry entries 
+[SEMCV800-V802SE.AddReg]
+HKR,,NTMPDriver,,v800mdm.sys
+HKR,,OverrideDefaultPortSettings, 0x10001, 01,00,00,00
+HKR,,InitialBaudRate, 0x10001, 00,C2,01,00			;115200 initial baud rate
+HKR,,InitialLineControl,, "8N1"					;8-bits, No parity, 1 stop bit
+HKR,,EnableSetClearFeatureIdle, 0x10001, 01,00,00,00
+
+; only for NT...
+[SEMCV800-V802SE.NT.AddReg]
+
+;-----------------------------------------------------------------------------
+;  Copy lists
+;-----------------------------------------------------------------------------
+[CopyFiles]
+
+[CopyFiles.Win2K]
+v800mdm.sys
+v800cm.sys,v800cmnt.sys
+v800cmnt.sys
+v800mdfl.sys
+
+
+;-----------------------------------------------------------------------------
+;  NT Services installation
+;-----------------------------------------------------------------------------
+[SEMCV800-V802SE.Install.NT.HW]
+AddReg = LowerFilterAddReg
+AddReg = UpperFilterAddReg
+
+[SEMCV800-V802SE.Install.NT.Services]
+AddService = v800mdm, 0x00000000, SEMCV800-V802SE.Install.AddService
+AddService = v800mdfl,, SEMCV800-V802SE.Install.AddFilter
+
+[UpperFilterAddReg]
+HKR,,"UpperFilters",0x00010000,"v800mdfl"
+
+[SEMCV800-V802SE.Install.AddService]
+DisplayName	= %SEMCV800-V802SE.Service.Name%
+Description	= %SEMCV800-V802SE.Service.Desc%
+ServiceType	= 1			;%SERVICE_KERNEL_DRIVER%
+StartType	= 3			;%SERVICE_DEMAND_START%
+ErrorControl	= 1			;%SERVICE_ERROR_NORMAL%	
+ServiceBinary	= %12%\v800mdm.sys
+
+[SEMCV800-V802SE.Install.AddFilter]
+DisplayName	= %SEMCV800-V802SE.Filter.Name%
+Description	= %SEMCV800-V802SE.Filter.Desc%
+ServiceType	= 1			;%SERVICE_KERNEL_DRIVER%
+StartType	= 3			;%SERVICE_DEMAND_START%
+ErrorControl	= 1			;%SERVICE_ERROR_NORMAL%	
+ServiceBinary	= %12%\v800mdfl.sys
+
+[LowerFilterAddReg]
+HKR,,"LowerFilters",0x00010000,"v800mdm"
+
+[GenericAddReg]
+HKR,, FriendlyDriver,,unimodem.vxd
+HKR,, PortSubClass,1, 02
+HKR,, ConfigDialog,, modemui.dll
+HKR,, EnumPropPages,, "modemui.dll,EnumPropPages"
+HKR,, FClass, 1, c3,00,00,00
+HKR,,Properties,  1, 00,00,00,00, FF,00,00,00, 00,00,00,00, 00,00,00,00, 00,00,00,00, 01,00,00,00, 00,c2,01,00, 80,70,00,00
+HKR,, DCB, 1, 1C,00,00,00, 00,C2,01,00, 15,20,00,00, 00,00, 0a,00, 0a,00, 08, 00, 00, 11, 13, 00, 00, 00
+;HKR,, VoiceProfile,    1,23,22,09,00
+HKR, Fax, CL1FCS,, "2"
+
+HKR, Init, 1,, "AT<cr>"
+HKR, Init, 2,, "AT &F<cr>"
+HKR, Init, 3,, "AT V1E0S0=0&D2&C1<cr>"
+HKR, Init, 4,, "AT +CMEE=1<cr>"
+HKR, Monitor, 1,, "ATS0=0<cr>"
+HKR, Monitor, 2,, "None"
+HKR, Answer, 1,, "ATA<cr>"
+HKR, Hangup, 1,, "ATH<cr>"
+HKR,, Reset,, "AT&F<cr>"
+HKR, Settings, Compression_Off,, "+DS=0;"
+HKR, Settings, Compression_On,, "+DS=3,0,2048,32;"   
+HKR, Settings, CompatibilityFlags, 1, 01 ,00 ,00, 00
+HKR, Settings, CallSetupFailTimer,, "S7=<#>;"
+HKR, Settings, DialPrefix,, "D"
+HKR, Settings, DialSuffix,, ";"
+HKR, Settings, Prefix,, "AT"
+HKR, Settings, Terminator,, "<cr>"
+
+
+; DTE/DCE speeds will not be exact for generic modems because we will
+; treat CONNECT ### as a DCE speed when some modems will report it as DTE.
+HKR, Responses, "0<cr>",    1, 00, 00, 00,00,00,00, 00,00,00,00 ; OK - Command executed
+HKR, Responses, "1<cr>",    1, 02, 00, 00,00,00,00, 00,00,00,00 ; CONNECT - Connection
+HKR, Responses, "2<cr>",    1, 08, 00, 00,00,00,00, 00,00,00,00 ; RING - Ring signal indicated
+HKR, Responses, "3<cr>",    1, 04, 00, 00,00,00,00, 00,00,00,00 ; NO CARRIER 
+HKR, Responses, "4<cr>",    1, 03, 00, 00,00,00,00, 00,00,00,00 ; ERROR - Invalid command
+HKR, Responses, "5<cr>",    1, 02, 00, B0,04,00,00, 00,00,00,00 ; CONNECT 1200
+HKR, Responses, "6<cr>",    1, 05, 00, 00,00,00,00, 00,00,00,00 ; NO DIALTONE - No dial tone detected
+HKR, Responses, "7<cr>",    1, 06, 00, 00,00,00,00, 00,00,00,00 ; BUSY - Engaged (busy) signal
+HKR, Responses, "8<cr>",    1, 07, 00, 00,00,00,00, 00,00,00,00 ; NO ANSWER
+
+HKR, Responses, "<cr><lf>OK<cr><lf>",                     1, 00, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>RING<cr><lf>",                   1, 08, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>NO CARRIER<cr><lf>",             1, 04, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>ERROR<cr><lf>",                  1, 03, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>NO DIALTONE<cr><lf>",            1, 05, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>NO DIAL TONE<cr><lf>",           1, 05, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>BUSY<cr><lf>",                   1, 06, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>NO ANSWER<cr><lf>",              1, 07, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT<cr><lf>",                1, 02, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 2400<cr><lf>",           1, 02, 00, 60,09,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 4800<cr><lf>",           1, 02, 00, C0,12,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 9600<cr><lf>",           1, 02, 00, 80,25,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 14400<cr><lf>",          1, 02, 00, 40,38,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 19200<cr><lf>",          1, 02, 00, 00,4B,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 28800<cr><lf>",          1, 02, 00, 80,70,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 33600<cr><lf>",          1, 02, 00, 40,83,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 38400<cr><lf>",          1, 02, 00, 00,96,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 57600<cr><lf>",          1, 02, 00, 00,e1,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 115200<cr><lf>",         1, 02, 00, 00,c2,01,00, 00,00,00,00
+HKR, Responses, "<cr><lf>FAX<cr><lf>",                    1, 03, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>DATA<cr><lf>",                   1, 03, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>VOICE<cr><lf>",                  1, 03, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>RINGING<cr><lf>",                1, 01, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>DELAYED<cr><lf>",                1, 1D, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>DELAYED NUMBER<cr><lf>",         1, 1D, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>BLACKLISTED<cr><lf>",            1, 1C, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>BLACKLISTED NUMBER<cr><lf>",     1, 1C, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+FCERROR<cr><lf>",               1, 03, 00, 00,00,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>+CME ERROR: 0<cr><lf>",    1, 03, 00, 00,00,00,00, 00,00,00,00   ; Phone failure.
+HKR, Responses, "<cr><lf>+CME ERROR: 1<cr><lf>",    1, 03, 00, 00,00,00,00, 00,00,00,00   ; No connection to phone.
+HKR, Responses, "<cr><lf>+CME ERROR: 2<cr><lf>",    1, 03, 00, 00,00,00,00, 00,00,00,00   ; Phone modem link reserved.
+HKR, Responses, "<cr><lf>+CME ERROR: 3<cr><lf>",    1, 03, 00, 00,00,00,00, 00,00,00,00   ; Operation not permitted.
+HKR, Responses, "<cr><lf>+CME ERROR: 4<cr><lf>",    1, 03, 00, 00,00,00,00, 00,00,00,00   ; Operation not supported.
+HKR, Responses, "<cr><lf>+CME ERROR: 5<cr><lf>",    1, 03, 00, 00,00,00,00, 00,00,00,00   ; PH-SIM card PIN required.
+HKR, Responses, "<cr><lf>+CME ERROR: 6<cr><lf>",    1, 03, 00, 00,00,00,00, 00,00,00,00   ; PH-FSIM PIN required
+HKR, Responses, "<cr><lf>+CME ERROR: 7<cr><lf>",    1, 03, 00, 00,00,00,00, 00,00,00,00   ; PH-FSIM PUK required
+HKR, Responses, "<cr><lf>+CME ERROR: 10<cr><lf>",   1, 03, 00, 00,00,00,00, 00,00,00,00   ; SIM card not inserted.
+HKR, Responses, "<cr><lf>+CME ERROR: 11<cr><lf>",   1, 03, 00, 00,00,00,00, 00,00,00,00   ; SIM card PIN required.
+HKR, Responses, "<cr><lf>+CME ERROR: 12<cr><lf>",   1, 03, 00, 00,00,00,00, 00,00,00,00   ; SIM card PUK required.
+HKR, Responses, "<cr><lf>+CME ERROR: 13<cr><lf>",   1, 03, 00, 00,00,00,00, 00,00,00,00   ; SIM card failure.
+HKR, Responses, "<cr><lf>+CME ERROR: 14<cr><lf>",   1, 03, 00, 00,00,00,00, 00,00,00,00   ; SIM card busy.
+HKR, Responses, "<cr><lf>+CME ERROR: 15<cr><lf>",   1, 03, 00, 00,00,00,00, 00,00,00,00   ; SIM card wrong.
+HKR, Responses, "<cr><lf>+CME ERROR: 16<cr><lf>",   1, 03, 00, 00,00,00,00, 00,00,00,00   ; Incorrect password.
+HKR, Responses, "<cr><lf>+CME ERROR: 20<cr><lf>",   1, 03, 00, 00,00,00,00, 00,00,00,00   ; Memory full.
+HKR, Responses, "<cr><lf>+CME ERROR: 21<cr><lf>",   1, 03, 00, 00,00,00,00, 00,00,00,00   ; Invalid index.
+HKR, Responses, "<cr><lf>+CME ERROR: 22<cr><lf>",   1, 03, 00, 00,00,00,00, 00,00,00,00   ; Not found.
+HKR, Responses, "<cr><lf>+CME ERROR: 23<cr><lf>",   1, 03, 00, 00,00,00,00, 00,00,00,00   ; Memory failure.
+HKR, Responses, "<cr><lf>+CME ERROR: 24<cr><lf>",   1, 03, 00, 00,00,00,00, 00,00,00,00   ; Text string too long.
+HKR, Responses, "<cr><lf>+CME ERROR: 25<cr><lf>",   1, 03, 00, 00,00,00,00, 00,00,00,00   ; Invalid character in text string.
+HKR, Responses, "<cr><lf>+CME ERROR: 26<cr><lf>",   1, 03, 00, 00,00,00,00, 00,00,00,00   ; Dial string too long.
+HKR, Responses, "<cr><lf>+CME ERROR: 27<cr><lf>",   1, 03, 00, 00,00,00,00, 00,00,00,00   ; Invalid character in dial string.
+HKR, Responses, "<cr><lf>+CME ERROR: 30<cr><lf>",   1, 03, 00, 00,00,00,00, 00,00,00,00   ; No network service
+HKR, Responses, "<cr><lf>+CME ERROR: 31<cr><lf>",   1, 03, 00, 00,00,00,00, 00,00,00,00   ; Network timeout
+HKR, Responses, "<cr><lf>+CME ERROR: 100<cr><lf>",  1, 03, 00, 00,00,00,00, 00,00,00,00   ; Unknown.
+HKR, Responses, "<cr><lf>+CMS ERROR: ",             1, 03, 00, 00,00,00,00, 00,00,00,00   ; CMS errors
+
+
+[USB]
+HKR,, PortDriver, 0, wdmmdmld.vxd
+HKR,, DeviceType, 1, 01
+
+
+;-----------------------------------------------------------------------------
+; STRINGS
+;-----------------------------------------------------------------------------
+[Strings]
+
+;<<localize the following>>
+
+;BEGIN ENG - US English Strings
+
+Provider = "Sony Ericsson"
+Sony Ericsson = "Sony Ericsson"
+DiskString = "Sony Ericsson V800-Vodafone 802SE USB WMC Modem installation disk"
+
+SEMCV800-V802SE.Modem.Desc = "Sony Ericsson V800-Vodafone 802SE USB WMC Data Modem"
+SEMCV800-V802SE.Service.Name = "Sony Ericsson V800-Vodafone 802SE USB WMC Modem Driver"
+SEMCV800-V802SE.Service.Desc = "Sony Ericsson V800-Vodafone 802SE USB WMC Modem Driver"
+
+SEMCV800-V802SE.Filter.Name = "Sony Ericsson V800-Vodafone 802SE USB WMC Modem Filter"
+SEMCV800-V802SE.Filter.Desc = "Sony Ericsson V800-Vodafone 802SE USB WMC Modem Filter"
+
+SEMCV800-V802SE.Modem.Desc.2 = "Sony Ericsson V800-Vodafone 802SE USB WMC Modem"
+
+CustomerDataPath = "Sony Ericsson V800-Vodafone 802SE"
+DriverSet = "Sony Ericsson V800-Vodafone 802SE Software"
+UninstallFile = "V800Uninstall.exe"
+McciOptions = "Uninstallable"
+
+
+;END ENG - US English Strings
+
+;-----------------------------------------------------------------------------
+; The following are symbolic constants which don't change per locale.
+;-----------------------------------------------------------------------------
+
+
+;*** end of file ***

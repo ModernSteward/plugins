@@ -1,0 +1,10 @@
+USB Cable DCU-11
+USB Cable DCU-11
+USB Cable DCU-11
+DCUbus.inf
+DCUwdm.inf
+DCUvxd.inf
+Quiet
+NoLeaveSource
+DCUCOMM&10A6&AA26
+C:\Program Files\SiLabs\MCU\CP2101

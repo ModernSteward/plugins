@@ -1,0 +1,101 @@
+;*******************************************************************
+; Installation file (.inf) for the USB to Virtual Serial ports device
+; VXD For WIN98
+;
+; (c) Copyright 2004 Ark Pioneer Microelectronics Ltd. 
+;
+;
+; 22-Sep-2004
+;*******************************************************************
+
+[Version]
+Signature="$CHICAGO$"
+Provider=%ProviderName%
+
+Class=Ports
+ClassGUID={4d36e978-e325-11ce-bfc1-08002be10318}
+
+DriverVer=06/20/2005,1.8.0.0
+
+;--------- Manufacturer and Models Sections ----------------------------------
+[Manufacturer]
+%Mfg%=ArkMicro
+
+[ArkMicro]
+%DeviceDesc%=ser2up, VID_6547&PID_0232
+
+;---------- DDInstall Sections -----------------------------------------------
+; --------- Windows 98 -----------------
+[ser2up]
+AddReg=ser2up.AddReg
+LogConfig=caa,c34,c3a,c43,c4a,c14,c1a,c23,c2a
+
+[ser2up.AddReg]
+HKR,,DevLoader,,*vcomm
+HKR,,Enumerator,,serenum.vxd
+HKR,,PortDriver,,ser2up.vxd
+HKR,,USBDriver,,usbport.sys
+HKR,,Contention,,*vcd
+HKR,,ConfigDialog,,serialui.dll
+HKR,,DCB,3,1C,00,00,00, 00,C2,01,00, 15,20,00,00, 00,00, 0a,00, 0a,00, 08, 00, 00, 11, 13, 00, 00, 00
+HKR,,PortSubClass,1,01
+HKR,,EnumPropPages,,"serialui.dll,EnumPropPages"
+
+[c34]			; COM3, IRQ4
+ConfigPriority=HARDRECONFIG
+IOConfig=3e8-3ef(3ff::)
+IRQConfig=S:4
+
+[c3a]			; COM3, any IRQ
+ConfigPriority=HARDRECONFIG
+IOConfig=3e8-3ef(3ff::)
+IRQConfig=S:3,4,5,7,9,10,11,12,14,15
+
+[c43]			; COM4, IRQ3
+ConfigPriority=HARDRECONFIG
+IOConfig=2e8-2ef(3ff::)
+IRQConfig=S:3,5
+
+[c4a]			; COM4, any IRQ
+ConfigPriority=HARDRECONFIG
+IOConfig=2e8-2ef(3ff::)
+IRQConfig=S:3,4,5,7,9,10,11,12,14,15
+
+[caa]			; Any base, any IRQ
+ConfigPriority=HARDRECONFIG
+IOConfig=8@100-ffff%fff8(3ff::)
+IRQConfig=S:3,4,5,7,9,10,11,12,14,15
+
+[c00]			; No resources
+ConfigPriority=HARDRECONFIG
+IOConfig=0
+IRQConfig=S:000-000(000::)
+
+[c14]			; COM1,IRQ4
+ConfigPriority=HARDRECONFIG
+IOConfig=3f8-3ff(3ff::)
+IRQConfig=S:4
+
+[c1a]			; COM1, any IRQ
+ConfigPriority=HARDRECONFIG
+IOConfig=3f8-3ff(3ff::)
+IRQConfig=S:3,4,5,7,9,10,11,12,14,15
+
+[c23]			; COM2, IRQ3
+ConfigPriority=HARDRECONFIG
+IOConfig=2f8-2ff(3ff::)
+IRQConfig=S:3
+
+[c2a]			; COM2, any IRQ
+ConfigPriority=HARDRECONFIG
+IOConfig=2f8-2ff(3ff::)
+IRQConfig=S:3,4,5,7,9,10,11,12,14,15
+
+;--------- Strings Section ---------------------------------------------------
+
+[Strings]
+ProviderName="USB World Technology Inc."
+Mfg="USB World"
+DeviceDesc="USB Dta Cable"
+DiskId = "Install disk"
+

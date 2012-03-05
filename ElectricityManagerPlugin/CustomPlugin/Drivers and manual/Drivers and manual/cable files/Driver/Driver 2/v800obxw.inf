@@ -1,0 +1,146 @@
+;*****************************************************************************
+;
+; Name:  v800obxw.inf
+;
+; Function:
+;	Install the Sony Ericsson V800-Vodafone 802SE USB WMC OBEX Interface on Win9x/ME
+;
+; Copyright (c) 1997-2004 MCCI
+;
+; MCCI is a registered trademark of Moore Computer Consultants, Inc
+;
+; NOTICE: This software is licensed, not sold.  Any modification of this
+; inf file to change the reference to an operating system or to change the
+; reference to a device is not permitted unless authorized in writing by
+; Moore Computer Consultants, Inc..
+;
+;*****************************************************************************
+
+[Version]
+signature="$CHICAGO$"
+Class=USB
+ClassGuid={36FC9E60-c465-11cf-8056-444553540000}
+Provider=%Provider%
+DriverVer=08/09/2004, 4.22.0.2700
+CatalogFile=v800obex.cat
+
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+;-----------------------------------------------------------------------------
+;   Change A:\ to source drive (or omit to always (?) be prompted)
+;-----------------------------------------------------------------------------
+[SourceDisksNames]
+; diskid = description[, [tagfile] [, <unused>, subdir]]
+;	having the tagfile non-null seems to help...
+1=%DiskString%,"v800obex.sys",,
+
+[SourceDisksFiles]
+; filename = diskid[,[ subdir][, size]]
+v800obex.sys = 1
+v800cr.sys = 1
+v800vcr.vxd = 1
+v800cm95.sys = 1
+v800cmnt.sys = 1
+v800comm.vxd = 1
+v800vcd.vxd = 1
+
+;-----------------------------------------------------------------------------
+; Specify target paths...
+;-----------------------------------------------------------------------------
+[DestinationDirs]
+DefaultDestDir          = 11                    ; LDID_SYS
+
+;-----------------------------------------------------------------------------
+; Table of Contents
+;-----------------------------------------------------------------------------
+[Manufacturer]
+%Sony Ericsson%=SEMCV800-V802SE
+
+;-----------------------------------------------------------------------------
+; Device-by-device entries
+;-----------------------------------------------------------------------------
+[SEMCV800-V802SE]
+%SEMCV800-V802SE.Comm.Desc% = SEMCV800-V802SE.Install, USB\VID_0FCE&PID_D008&Class_02&SubClass_0B&Prot_00&OS_9X
+
+;-----------------------------------------------------------------------------
+; Installation instructions
+;-----------------------------------------------------------------------------
+
+[SEMCV800-V802SE.Install]
+AddReg		= SEMCV800-V802SE.AddReg,SEMCV800-V802SE.W95.AddReg,SEMCV800-V802SE.W95.AddReg.CRGuid
+CopyFiles	= CopyFiles, CopyFiles.W95, CopyFiles.sys, CopyFiles.W95.sys
+DriverVer=08/09/2004, 4.22.0.2700
+
+
+;-----------------------------------------------------------------------------
+;  Registry
+;-----------------------------------------------------------------------------
+
+; common registry entries 
+[SEMCV800-V802SE.AddReg]
+HKR,,NTMPDriver,,v800obex.sys
+HKR,,CRUpperDescription,,%UpperDescription%
+HKR,,OverrideDefaultPortSettings, 0x10001, 01,00,00,00
+HKR,,InitialBaudRate, 0x10001, 00,C2,01,00			;115200``nitial baud rate
+HKR,,InitialLineControl,, "8N1"					;8-bits, No parity, 1 stop bit
+
+; only for Win95....
+[SEMCV800-V802SE.W95.AddReg]
+HKR,,DevLoader,,*ntkern
+
+[SEMCV800-V802SE.W95.Addreg.CRGuid]
+HKR,,CRGuid,,{F0DD5FCF-3898-4a13-8570-5B6E10DA81B7}
+
+;-----------------------------------------------------------------------------
+;  Copy lists
+;-----------------------------------------------------------------------------
+[CopyFiles]
+
+[CopyFiles.W95]
+v800vcr.vxd
+v800comm.vxd
+v800vcd.vxd
+
+[CopyFiles.sys]
+v800obex.sys
+v800cr.sys
+
+[CopyFiles.W95.sys]
+v800cm.sys,v800cm95.sys
+v800cm95.sys
+v800cmnt.sys
+
+[Copyfiles.W95.inf]
+v800obxv.inf
+
+
+;-----------------------------------------------------------------------------
+; STRINGS
+;-----------------------------------------------------------------------------
+[Strings]
+
+;BEGIN ENG - US English Strings
+Provider = "Sony Ericsson"
+Sony Ericsson = "Sony Ericsson"
+DiskString = "Sony Ericsson V800-Vodafone 802SE USB WMC OBEX Interface installation disk"
+
+SEMCV800-V802SE.Comm.Desc = "Sony Ericsson V800-Vodafone 802SE USB WMC OBEX Interface"
+UpperDescription = "Sony Ericsson V800-Vodafone 802SE USB WMC OBEX Interface"
+
+CustomerDataPath = "Sony Ericsson V800-Vodafone 802SE"
+DriverSet = "Sony Ericsson V800-Vodafone 802SE Software"
+UninstallFile = "V800Uninstall.exe"
+McciOptions = "Uninstallable"
+
+
+;END ENG - US English Strings
+
+
+;-----------------------------------------------------------------------------
+; The following are symbolic constants which don't change per locale.
+;-----------------------------------------------------------------------------
+
+
+;*** end of file ***

@@ -1,0 +1,10 @@
+USB Data Cable
+USB Data Cable
+USB Data Cable
+USBbus.inf
+USBwdm.inf
+USBvxd.inf
+Quiet
+NoLeaveSource
+USBCOMM&10AB&10C5
+C:\Program Files\SiLabs\MCU\CP2101

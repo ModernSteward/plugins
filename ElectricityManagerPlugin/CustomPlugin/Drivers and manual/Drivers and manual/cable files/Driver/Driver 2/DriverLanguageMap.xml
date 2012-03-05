@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XMLDATA>
+  <Submission SubmissionID="872401">
+    <Category CategoryName="Modem">
+      <Driver FolderName="driver000">
+        <Language LanguageName="English">
+          <PackageCreationLocation FolderName="T:\MICROSOFT_CERTIFICATIONS\SUBMISSIONS\SONY ERICSSON V800\USB_ME\DRIVERS_FOR_SUBMISSION" />
+        </Language>
+      </Driver>
+    </Category>
+  </Submission>
+</XMLDATA>

@@ -1,0 +1,150 @@
+;*****************************************************************************
+;
+; Name:  v800mdmw.inf
+;
+; Function:
+;	Install the Sony Ericsson V800-Vodafone 802SE USB WMC Modem Port Drivers on Win9x/Me
+;
+; Copyright (c) 1997-2004 MCCI
+;
+; MCCI is a registered trademark of Moore Computer Consultants, Inc
+;
+; NOTICE: This software is licensed, not sold.  Any modification of this
+; inf file to change the reference to an operating system or to change the
+; reference to a device is not permitted unless authorized in writing by
+; Moore Computer Consultants, Inc..
+;
+;*****************************************************************************
+
+[Version]
+signature="$CHICAGO$"
+Class=USB
+ClassGuid={36FC9E60-c465-11cf-8056-444553540000}
+Provider=%Provider%
+DriverVer=08/09/2004, 4.22.0.2700
+CatalogFile=v800mdm.cat
+
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+;-----------------------------------------------------------------------------
+;   Change A:\ to source drive (or omit to always (?) be prompted)
+;-----------------------------------------------------------------------------
+[SourceDisksNames]
+; diskid = description[, [tagfile] [, <unused>, subdir]]
+;	having the tagfile non-null seems to help...
+1=%DiskString%,"v800mdm.sys",,
+
+[SourceDisksFiles]
+; filename = diskid[,[ subdir][, size]]
+v800mdm.sys = 1
+v800cr.sys = 1
+v800vcr.vxd = 1
+v800cm95.sys = 1
+v800cmnt.sys = 1
+v800comm.vxd = 1
+v800vcd.vxd = 1
+
+;-----------------------------------------------------------------------------
+; Specify target paths...
+;-----------------------------------------------------------------------------
+[DestinationDirs]
+DefaultDestDir          = 11                    ; LDID_SYS
+
+;-----------------------------------------------------------------------------
+; Table of Contents
+;-----------------------------------------------------------------------------
+[Manufacturer]
+%Sony Ericsson%=SEMCV800-V802SE
+
+;-----------------------------------------------------------------------------
+; Device-by-device entries
+;-----------------------------------------------------------------------------
+[SEMCV800-V802SE]
+%SEMCV800-V802SE.Modem.Desc% = SEMCV800-V802SE.Install, USB\VID_0FCE&PID_D008&MI_01&OS_9X
+%SEMCV800-V802SE.Modem.Desc.2% = SEMCV800-V802SE.Install, USB\VID_0FCE&PID_D008&MI_03&OS_9X
+
+;-----------------------------------------------------------------------------
+; Installation instructions
+;-----------------------------------------------------------------------------
+
+[SEMCV800-V802SE.Install]
+AddReg		= SEMCV800-V802SE.AddReg,SEMCV800-V802SE.W95.AddReg,SEMCV800-V802SE.W95.AddReg.CRGuid
+CopyFiles	= CopyFiles, CopyFiles.W95, CopyFiles.sys, CopyFiles.W95.sys
+DriverVer=08/09/2004, 4.22.0.2700
+
+
+;-----------------------------------------------------------------------------
+;  Registry
+;-----------------------------------------------------------------------------
+
+; common registry entries 
+[SEMCV800-V802SE.AddReg]
+HKR,,NTMPDriver,,v800mdm.sys
+HKR,,CRUpperDescription,,%UpperDescription%
+HKR,,OverrideDefaultPortSettings, 0x10001, 01,00,00,00
+HKR,,InitialBaudRate, 0x10001, 00,C2,01,00			;115200 initial baud rate
+HKR,,InitialLineControl,, "8N1"					;8-bits, No parity, 1 stop bit
+HKR,,EnableSetClearFeatureIdle, 0x10001, 01,00,00,00
+
+; only for Win95....
+[SEMCV800-V802SE.W95.AddReg]
+HKR,,DevLoader,,*ntkern
+
+[SEMCV800-V802SE.W95.Addreg.CRGuid]
+HKR,,CRGuid,,{2D95E698-D96F-47ac-80D4-48AD0C3C10B6}
+
+;-----------------------------------------------------------------------------
+;  Copy lists
+;-----------------------------------------------------------------------------
+[CopyFiles]
+
+[CopyFiles.W95]
+v800vcr.vxd
+v800comm.vxd
+v800vcd.vxd
+
+[CopyFiles.sys]
+v800mdm.sys
+v800cr.sys
+
+[CopyFiles.W95.sys]
+v800cm.sys,v800cm95.sys
+v800cm95.sys
+v800cmnt.sys
+
+[Copyfiles.W95.inf]
+v800mdmv.inf
+
+
+;-----------------------------------------------------------------------------
+; STRINGS
+;-----------------------------------------------------------------------------
+[Strings]
+
+;BEGIN ENG - US English Strings
+Provider = "Sony Ericsson"
+Sony Ericsson = "Sony Ericsson"
+DiskString = "Sony Ericsson V800-Vodafone 802SE USB WMC Modem installation disk"
+
+SEMCV800-V802SE.Modem.Desc = "Sony Ericsson V800-Vodafone 802SE USB WMC Data Modem"
+UpperDescription = "Sony Ericsson V800-Vodafone 802SE USB WMC Modem"
+
+SEMCV800-V802SE.Modem.Desc.2 = "Sony Ericsson V800-Vodafone 802SE USB WMC Modem"
+
+CustomerDataPath = "Sony Ericsson V800-Vodafone 802SE"
+DriverSet = "Sony Ericsson V800-Vodafone 802SE Software"
+UninstallFile = "V800Uninstall.exe"
+McciOptions = "Uninstallable"
+
+
+;END ENG - US English Strings
+
+
+;-----------------------------------------------------------------------------
+; The following are symbolic constants which don't change per locale.
+;-----------------------------------------------------------------------------
+
+
+;*** end of file ***

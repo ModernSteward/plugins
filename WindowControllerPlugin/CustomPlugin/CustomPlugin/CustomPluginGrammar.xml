@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TreeView xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" SpacingBetweenNodes="-1" LabelEdit="true" CausesValidation="true" BackColor="White">
+  <Nodes Name="CustomPlugin" Text="minimize window">
+    <Tag xsi:type="GrammarTreeViewTag">
+      <IsDictation>false</IsDictation>
+      <DictationContext />
+      <Optional>false</Optional>
+    </Tag>
+  </Nodes>
+  <Nodes Name="New Node" Text="maximize window">
+    <Tag xsi:type="GrammarTreeViewTag">
+      <IsDictation>false</IsDictation>
+      <DictationContext />
+      <Optional>false</Optional>
+    </Tag>
+  </Nodes>
+  <Nodes Name="New Node" Text="close window">
+    <Tag xsi:type="GrammarTreeViewTag">
+      <IsDictation>false</IsDictation>
+      <DictationContext />
+      <Optional>false</Optional>
+    </Tag>
+  </Nodes>
+  <Nodes Name="New Node" Text="restore window">
+    <Tag xsi:type="GrammarTreeViewTag">
+      <IsDictation>false</IsDictation>
+      <DictationContext />
+      <Optional>false</Optional>
+    </Tag>
+  </Nodes>
+</TreeView>

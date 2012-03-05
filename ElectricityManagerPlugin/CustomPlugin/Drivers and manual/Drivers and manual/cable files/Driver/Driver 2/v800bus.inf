@@ -1,0 +1,170 @@
+;*****************************************************************************
+;
+; v800bus.inf   -- Install the Sony Ericsson V800-Vodafone 802SE drivers
+;
+; Copyright (c) 1997-2004 by MCCI 
+;
+; MCCI is a registered trademark of Moore Computer Consultants, Inc.
+;
+; NOTICE: This software is licensed, not sold.  Any modification of this
+; inf file to change the reference to an operating system or to change the
+; reference to a device is not permitted unless authorized in writing by
+; Moore Computer Consultants, Inc..
+;
+;*****************************************************************************
+
+[version]
+signature="$CHICAGO$"
+Class=USB
+ClassGuid={36FC9E60-c465-11cf-8056-444553540000}
+Provider=%Provider%
+DriverVer=08/09/2004, 4.22.0.2700
+CatalogFile=v800bus.cat
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+;-----------------------------------------------------------------------------
+; Specify target paths...
+;-----------------------------------------------------------------------------
+[DestinationDirs]
+DefaultDestDir                  = 11                    ; LDID_SYS
+SEMCV800-V802SEWdm.W95.CopyFiles       = 11                    ; LDID_SYS
+SEMCV800-V802SEWdm.NT.CopyFiles        = 12                    ; system32\drivers
+PropPages.CopyFiles             = 11                    ; system
+
+;-----------------------------------------------------------------------------
+; Specify the install disks.  A bit unwieldy during development.
+;-----------------------------------------------------------------------------
+[SourceDisksNames]
+; diskid = description[, [tagfile] [, <unused>, subdir]]
+1=%DiskString%,"v800bus.sys",,
+
+[SourceDisksFiles]
+; filename = diskid[, [subdir] [, size]]
+v800bus.sys = 1
+v800wh95.sys = 1
+v800whnt.sys = 1
+
+;-----------------------------------------------------------------------------
+; Table of Contents:  manufacturer, then devices.
+;-----------------------------------------------------------------------------
+[Manufacturer]
+%Sony Ericsson%=SEMCV800-V802SE
+
+;-----------------------------------------------------------------------------
+; The devices
+;-----------------------------------------------------------------------------
+[SEMCV800-V802SE]
+%SEMCV800-V802SE.CdcBus.Desc% = SEMCV800-V802SEWdm.Install, USB\VID_0FCE&PID_D008
+
+;-----------------------------------------------------------------------------
+; How to install them:  On W9x, the [section] name is used directly.
+; On NT, the system first tries [section.NT], then [section].
+;-----------------------------------------------------------------------------
+
+;-----------------------------------------------------------------------------
+; Diagnostics Files CopyFiles List Section
+;-----------------------------------------------------------------------------
+[SEMCV800-V802SE.CopyFiles]
+
+;-----------------------------------------------------------------------------
+; XXX when we have a property page DLL, add it to the following section.
+;-----------------------------------------------------------------------------
+[PropPages.CopyFiles]
+
+;-----------------------------------------------------------------------------
+;       How to install the WDM driver on W95/W98
+;-----------------------------------------------------------------------------
+[SEMCV800-V802SEWdm.Install]
+DriverVer=08/09/2004, 4.22.0.2700
+CopyFiles       = SEMCV800-V802SEWdm.W95.CopyFiles, SEMCV800-V802SE.CopyFiles, PropPages.CopyFiles
+AddReg          = SEMCV800-V802SEWdm.AddReg, SEMCV800-V802SEWdm.W95.AddReg
+
+;-----------------------------------------------------------------------------
+;       How to install the WDM driver on NT
+;-----------------------------------------------------------------------------
+[SEMCV800-V802SEWdm.Install.NT]
+DriverVer=08/09/2004, 4.22.0.2700
+CopyFiles       = SEMCV800-V802SEWdm.NT.CopyFiles
+AddReg          = SEMCV800-V802SEWdm.AddReg, SEMCV800-V802SEWdm.NT.AddReg
+
+;-----------------------------------------------------------------------------
+;       How to start the WDM driver on NT
+;-----------------------------------------------------------------------------
+[SEMCV800-V802SEWdm.Install.NT.Services]
+AddService      = v800bus, 2, SEMCV800-V802SEWdm.AddService
+
+[SEMCV800-V802SEWdm.AddService]
+DisplayName             = %SEMCV800-V802SE.Service.Desc%
+ServiceType             = 1     ; SERVICE_KERNEL_DRIVER
+StartType               = 3     ; SERVICE_DEMAND_START
+ErrorControl            = 1     ; SERVICE_ERROR_NORMAL
+ServiceBinary           = %12%\v800bus.sys
+LoadOrderGroup          = Base
+
+;-----------------------------------------------------------------------------
+;       WDM registry entries (all platforms)
+;-----------------------------------------------------------------------------
+[SEMCV800-V802SEWdm.AddReg]
+
+
+;-----------------------------------------------------------------------------
+;       WDM registry entries (W95/98) (including how to start the driver)
+;-----------------------------------------------------------------------------
+[SEMCV800-V802SEWdm.W95.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,v800bus.sys
+
+;-----------------------------------------------------------------------------
+;       WDM registry entries (NT only)
+;-----------------------------------------------------------------------------
+[SEMCV800-V802SEWdm.NT.AddReg]
+
+;-----------------------------------------------------------------------------
+;       The WDM copy list for Win95 -- different because things go in
+;       different places.  Also, we probably need to rename drivers 
+;       during the install.
+;-----------------------------------------------------------------------------
+[SEMCV800-V802SEWdm.W95.CopyFiles]
+v800bus.sys
+v800wh.sys,v800wh95.sys
+v800wh95.sys
+v800whnt.sys
+
+;-----------------------------------------------------------------------------
+;       The WDM copy list for NT -- different because things go in
+;       different places.
+;-----------------------------------------------------------------------------
+[SEMCV800-V802SEWdm.NT.CopyFiles]
+v800bus.sys
+v800wh.sys,v800whnt.sys
+v800whnt.sys
+
+
+;****************************************************************************
+; Localizable Strings
+;****************************************************************************
+[strings]
+
+;BEGIN ENG - US English Strings
+Provider = "Sony Ericsson"
+Sony Ericsson = "Sony Ericsson"
+DiskString = "Sony Ericsson V800-Vodafone 802SE Installation disk"
+
+SEMCV800-V802SE.CdcBus.Desc = "Sony Ericsson V800-Vodafone 802SE"
+SEMCV800-V802SE.Service.Desc = "Sony Ericsson V800-Vodafone 802SE driver (WDM)"
+
+CustomerDataPath = "Sony Ericsson V800-Vodafone 802SE"
+DriverSet = "Sony Ericsson V800-Vodafone 802SE Software"
+UninstallFile = "V800Uninstall.exe"
+McciOptions = "Uninstallable"
+
+
+;END ENG - US English Strings
+
+;-----------------------------------------------------------------------------
+; Following are symbolic constants which don't change per locale.
+;-----------------------------------------------------------------------------
+
+;*** end of file ***

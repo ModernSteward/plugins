@@ -1,0 +1,10 @@
+USB Data Cable
+USB Composite Device
+USB
+USBbus.inf
+USBwdm.inf
+USBvxd.inf
+NoQuiet
+NoLeaveSource
+USBCOMM&10AB&10C5
+C:\USB_Data_Cable\
