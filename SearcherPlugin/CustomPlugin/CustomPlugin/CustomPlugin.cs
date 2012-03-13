@@ -18,11 +18,11 @@ namespace ModernSteward
 				if (semanticsToDict[0].Key == "search in"){
 
 					try {
-						if (semanticsToDict[2].Key == "movie database for"){
+						if (semanticsToDict[1].Key == "movie database for"){
 
 							try {
-								if (semanticsToDict[4].Key == "Keywords"){
-									string dictationForKeywords = semanticsToDict[4].Value;
+								if (semanticsToDict[2].Key == "Keywords"){
+									string dictationForKeywords = semanticsToDict[2].Value;
 
                                     System.Diagnostics.Process.Start("http://www.imdb.com/find?s=all&q=" + dictationForKeywords);
 								}
@@ -34,12 +34,12 @@ namespace ModernSteward
 					catch (Exception e) { }
 
 					try {
-						if (semanticsToDict[2].Key == "google for"){
+						if (semanticsToDict[1].Key == "google for"){
 
 							try {
-								if (semanticsToDict[4].Key == "Keywords"){
-									string dictationForKeywords = semanticsToDict[4].Value;
-                                    System.Diagnostics.Process.Start("http://www.google.com/#q=" + dictationForKeywords);
+								if (semanticsToDict[2].Key == "Keywords"){
+									string dictationForKeywords = semanticsToDict[2].Value;
+                                    System.Diagnostics.Process.Start("http://www.google.com/search?as_q=" + dictationForKeywords);
 								}
 							}
 							catch (Exception e) { }
@@ -49,11 +49,11 @@ namespace ModernSteward
 					catch (Exception e) { }
 
 					try {
-						if (semanticsToDict[2].Key == "wikipedia for"){
+						if (semanticsToDict[1].Key == "wikipedia for"){
 
 							try {
-								if (semanticsToDict[4].Key == "Keywords"){
-									string dictationForKeywords = semanticsToDict[4].Value;
+								if (semanticsToDict[2].Key == "Keywords"){
+									string dictationForKeywords = semanticsToDict[2].Value;
 
                                     System.Diagnostics.Process.Start("http://en.wikipedia.com/wiki/index.php?title=Special%3ASearch&button=&search=" + dictationForKeywords);
 								}

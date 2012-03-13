@@ -46,6 +46,9 @@
 			// 
 			// labelUsername
 			// 
+			this.labelUsername.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+						| System.Windows.Forms.AnchorStyles.Left)
+						| System.Windows.Forms.AnchorStyles.Right)));
 			this.labelUsername.Location = new System.Drawing.Point(7, 21);
 			this.labelUsername.Name = "labelUsername";
 			this.labelUsername.Size = new System.Drawing.Size(31, 18);
@@ -54,36 +57,48 @@
 			// 
 			// textBoxUsername
 			// 
+			this.textBoxUsername.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+						| System.Windows.Forms.AnchorStyles.Left)
+						| System.Windows.Forms.AnchorStyles.Right)));
 			this.textBoxUsername.Location = new System.Drawing.Point(7, 45);
 			this.textBoxUsername.Name = "textBoxUsername";
-			this.textBoxUsername.Size = new System.Drawing.Size(161, 20);
+			this.textBoxUsername.Size = new System.Drawing.Size(146, 20);
 			this.textBoxUsername.TabIndex = 1;
 			this.textBoxUsername.TabStop = false;
 			// 
 			// labelPassword
 			// 
-			this.labelPassword.Location = new System.Drawing.Point(174, 21);
+			this.labelPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+						| System.Windows.Forms.AnchorStyles.Left)
+						| System.Windows.Forms.AnchorStyles.Right)));
+			this.labelPassword.Location = new System.Drawing.Point(173, 21);
 			this.labelPassword.Name = "labelPassword";
-			this.labelPassword.Size = new System.Drawing.Size(45, 18);
+			this.labelPassword.Size = new System.Drawing.Size(47, 18);
 			this.labelPassword.TabIndex = 2;
-			this.labelPassword.Text = "Парола";
+			this.labelPassword.Text = "Парола:";
 			// 
 			// buttonLogin
 			// 
+			this.buttonLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+						| System.Windows.Forms.AnchorStyles.Left)
+						| System.Windows.Forms.AnchorStyles.Right)));
 			this.buttonLogin.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.buttonLogin.Location = new System.Drawing.Point(174, 71);
 			this.buttonLogin.Name = "buttonLogin";
-			this.buttonLogin.Size = new System.Drawing.Size(161, 24);
+			this.buttonLogin.Size = new System.Drawing.Size(146, 24);
 			this.buttonLogin.TabIndex = 4;
 			this.buttonLogin.Text = "Влез";
 			this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
 			// 
 			// textBoxPassword
 			// 
+			this.textBoxPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+						| System.Windows.Forms.AnchorStyles.Left)
+						| System.Windows.Forms.AnchorStyles.Right)));
 			this.textBoxPassword.Location = new System.Drawing.Point(174, 45);
 			this.textBoxPassword.Name = "textBoxPassword";
 			this.textBoxPassword.PasswordChar = '*';
-			this.textBoxPassword.Size = new System.Drawing.Size(161, 20);
+			this.textBoxPassword.Size = new System.Drawing.Size(146, 20);
 			this.textBoxPassword.TabIndex = 3;
 			this.textBoxPassword.TabStop = false;
 			this.textBoxPassword.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxPassword_KeyUp);
@@ -91,6 +106,9 @@
 			// groupBoxAuth
 			// 
 			this.groupBoxAuth.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
+			this.groupBoxAuth.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+						| System.Windows.Forms.AnchorStyles.Left)
+						| System.Windows.Forms.AnchorStyles.Right)));
 			this.groupBoxAuth.Controls.Add(this.buttonLogin);
 			this.groupBoxAuth.Controls.Add(this.textBoxPassword);
 			this.groupBoxAuth.Controls.Add(this.labelUsername);
@@ -109,7 +127,7 @@
 			// 
 			// 
 			this.groupBoxAuth.RootElement.Padding = new System.Windows.Forms.Padding(2, 18, 2, 2);
-			this.groupBoxAuth.Size = new System.Drawing.Size(340, 104);
+			this.groupBoxAuth.Size = new System.Drawing.Size(325, 104);
 			this.groupBoxAuth.TabIndex = 0;
 			this.groupBoxAuth.Text = "Оторизация";
 			// 
@@ -117,8 +135,9 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(366, 111);
+			this.ClientSize = new System.Drawing.Size(351, 111);
 			this.Controls.Add(this.groupBoxAuth);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Name = "CredentialsAsk";
 			// 
 			// 
