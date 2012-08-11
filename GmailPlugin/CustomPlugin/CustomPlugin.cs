@@ -23,10 +23,9 @@ namespace ModernSteward
 			{
 				if (semanticsToDict[0].Key == "check for new mail")
 				{
-					//Application.Run(new ShowMessages(mail.Entries));
                     mail.GetFeed();
                     ShowMessages messagesForm = new ShowMessages(mail.Entries);
-                    messagesForm.Show();
+                    messagesForm.ShowDialog();
 				}
 			}
 			catch { }
@@ -49,5 +48,9 @@ namespace ModernSteward
             mail = new GMailIntegration(GmailUsername, GmailPassword);
             return mail.GetFeed();
         }
+		
+		public override event EventHandler<GrammarUpdateRequestEventArgs> RequestGrammarUpdate;
+
+		public override event EventHandler<EmulateCommandEventArgs> TryToEmulateCommand;
     }
 }

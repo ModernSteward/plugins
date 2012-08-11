@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TreeView xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" SpacingBetweenNodes="-1" LabelEdit="true" CausesValidation="true" BackColor="White">
+  <Nodes Name="CustomPlugin" Text="Turn the TV on">
+    <Tag xsi:type="GrammarTreeViewTag">
+      <IsDictation>false</IsDictation>
+      <DictationContext />
+      <Optional>false</Optional>
+    </Tag>
+  </Nodes>
+  <Nodes Name="New Node" Text="Turn the TV off">
+    <Tag xsi:type="GrammarTreeViewTag">
+      <IsDictation>false</IsDictation>
+      <DictationContext />
+      <Optional>false</Optional>
+    </Tag>
+  </Nodes>
+  <Nodes Name="New Node" Text="Next channel">
+    <Tag xsi:type="GrammarTreeViewTag">
+      <IsDictation>false</IsDictation>
+      <DictationContext />
+      <Optional>false</Optional>
+    </Tag>
+  </Nodes>
+  <Nodes Name="New Node" Text="Previous channel">
+    <Tag xsi:type="GrammarTreeViewTag">
+      <IsDictation>false</IsDictation>
+      <DictationContext />
+      <Optional>false</Optional>
+    </Tag>
+  </Nodes>
+  <Nodes Name="New Node" Text="Volume up the TV">
+    <Tag xsi:type="GrammarTreeViewTag">
+      <IsDictation>false</IsDictation>
+      <DictationContext />
+      <Optional>false</Optional>
+    </Tag>
+  </Nodes>
+  <Nodes Name="New Node" Text="Volume down the TV">
+    <Tag xsi:type="GrammarTreeViewTag">
+      <IsDictation>false</IsDictation>
+      <DictationContext />
+      <Optional>false</Optional>
+    </Tag>
+  </Nodes>
+  <Nodes Name="New Node" Text="Mute the TV">
+    <Tag xsi:type="GrammarTreeViewTag">
+      <IsDictation>false</IsDictation>
+      <DictationContext />
+      <Optional>false</Optional>
+    </Tag>
+  </Nodes>
+  <Nodes Name="New Node" Text="Turn up the temperature">
+	<Tag xsi:type="GrammarTreeViewTag">
+	  <IsDictation>false</IsDictation>
+	  <DictationContext />
+	  <Optional>false</Optional>
+	</Tag>
+  </Nodes>
+  <Nodes Name="New Node" Text="Turn down the temperature">
+	  <Tag xsi:type="GrammarTreeViewTag">
+		<IsDictation>false</IsDictation>
+		<DictationContext />
+		<Optional>false</Optional>
+	  </Tag>
+  </Nodes>
+  <Nodes Name="New Node" Text="Turn the aircondition on">
+	<Tag xsi:type="GrammarTreeViewTag">
+	  <IsDictation>false</IsDictation>
+	  <DictationContext />
+	  <Optional>false</Optional>
+	</Tag>
+  </Nodes>
+  <Nodes Name="New Node" Text="Turn the aircondition off">
+	<Tag xsi:type="GrammarTreeViewTag">
+	  <IsDictation>false</IsDictation>
+	  <DictationContext />
+	  <Optional>false</Optional>
+	</Tag>
+  </Nodes>
+</TreeView>

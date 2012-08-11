@@ -50,6 +50,7 @@ namespace ModernSteward
 				}
 				else
 				{
+					Melissa.Say("You have no new messages!");
 					gridViewMessages.Visible = false;
 					labelNoNewMessages.Visible = true;
 				}

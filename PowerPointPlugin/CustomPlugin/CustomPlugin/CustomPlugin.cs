@@ -19,31 +19,57 @@ namespace ModernSteward
         {
 			if (semanticsToDict[0].Key == "next slide")
             {
-                if (null == slideshow)
-                {
-                    //TODO: exception handling. Discuss with Liubo about message delivery system.
-                }
-                slideshow.NextSlide();
+				try
+				{
+					if (null == slideshow)
+					{
+						//TODO: exception handling. Discuss with Liubo about message delivery system.
+					}
+					else
+					{
+
+						slideshow.NextSlide();
+					}
+				}
+				catch { }
 			}
 			if (semanticsToDict[0].Key == "previous slide")
             {
-                if (null == slideshow)
-                {
-                    //TODO: see "next slide case"
-                }
-                slideshow.PreviousSlide();
+				try
+				{
+					if (null == slideshow)
+					{
+						//TODO: see "next slide case"
+					}
+					else
+					{
+						slideshow.PreviousSlide();
+					}
+				}
+				catch { }
 			}
 			if (semanticsToDict[0].Key == "close presentation")
             {
-                if (null == slideshow)
-                {
-                    //TODO: see "next slide case"
-                }
-                slideshow.ClosePresentation();
+				try
+				{
+					if (null == slideshow)
+					{
+						//TODO: see "next slide case"
+					}
+					else
+					{
+						slideshow.ClosePresentation();
+					}
+				}
+				catch { }
 			}
             if (semanticsToDict[0].Key == "open presentation")
             {
-                slideshow = new SlideshowManager(PresentationFilePath);
+				try
+				{
+					slideshow = new SlideshowManager(PresentationFilePath);
+				}
+				catch { }
             }
 
         }
@@ -69,5 +95,7 @@ namespace ModernSteward
             this.PresentationFilePath = init.PresentationFilePath;
             return true;
         }
+		
+		public override event EventHandler<GrammarUpdateRequestEventArgs> RequestGrammarUpdate;
     }
 }

@@ -24,7 +24,7 @@ namespace ModernSteward
                     {
                         if (semanticsToDict[1].Key == "on")
                         {
-                            elManager.SendON("A");
+                            elManager.SendON(1);
                         }
                     }
                     catch (Exception e) { }
@@ -33,7 +33,7 @@ namespace ModernSteward
                     {
                         if (semanticsToDict[1].Key == "off")
                         {
-                            elManager.SendOFF("A");
+                            elManager.SendOFF(1);
                         }
                     }
                     catch (Exception e) { }
@@ -46,7 +46,7 @@ namespace ModernSteward
             {
                 if (semanticsToDict[0].Key == "start heating the water")
                 {
-                    elManager.SendON("B");
+                    elManager.SendON(2);
                 }
             }
             catch (Exception e) { }
@@ -55,7 +55,7 @@ namespace ModernSteward
             {
                 if (semanticsToDict[0].Key == "stop heating the water")
                 {
-                    elManager.SendOFF("B");
+                    elManager.SendOFF(2);
                 }
             }
             catch (Exception e) { }
@@ -84,5 +84,7 @@ namespace ModernSteward
             }
             return true;
         }
+		
+		public override event EventHandler<GrammarUpdateRequestEventArgs> RequestGrammarUpdate;
     }
 }

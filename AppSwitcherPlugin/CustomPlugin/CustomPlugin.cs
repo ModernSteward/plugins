@@ -13,7 +13,8 @@ namespace ModernSteward
     {
         public override void Trigger(List<KeyValuePair<string, string>> semanticsToDict)
         {
-            AppSwitcher switcher = new AppSwitcher();
+			RequestGrammarUpdate.Invoke(this, new GrammarUpdateRequestEventArgs());
+			AppSwitcher switcher = new AppSwitcher();
 			if(semanticsToDict[0].Key == "switch to"){
 				if(semanticsToDict[1].Key == "first application"){
                     switcher.SwitchToApp(1);
@@ -46,7 +47,6 @@ namespace ModernSteward
 			if(semanticsToDict[0].Key == "next application"){
                 switcher.SwitchAhead(1);
 			}
-
         }
 
         public override GrammarBuilder GetGrammarBuilder()
@@ -60,5 +60,7 @@ namespace ModernSteward
             //Custom initialization for your plugin
             return true;
         }
+
+		public override event EventHandler<GrammarUpdateRequestEventArgs> RequestGrammarUpdate;
     }
 }

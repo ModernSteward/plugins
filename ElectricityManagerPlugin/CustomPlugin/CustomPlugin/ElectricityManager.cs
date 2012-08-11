@@ -108,22 +108,38 @@ namespace ModernSteward
             return false;
         }
 
-        public bool SendON(string sign)
+        public bool SendON(int number)
         {
             if (port.IsOpen)
             {
-                port.Write(sign + "ON" + '\r');
+				switch (number)
+				{
+					case 1:
+						port.Write(new byte[] { 0xFF, 0x01, 0x01 }, 0, 3);
+						break;
+					case 2:
+						port.Write(new byte[] { 0xFF, 0x02, 0x01 }, 0, 3);
+						break;
+				}
                 return true;
             }
             return false;
         }
 
-        public bool SendOFF(string sign)
+        public bool SendOFF(int number)
         {
             if (port.IsOpen)
             {
-                port.Write(sign + "OFF" + '\r');
-                return true;
+				switch (number)
+				{
+					case 1:
+						port.Write(new byte[] { 0xFF, 0x01, 0x00 }, 0, 3);
+						break;
+					case 2:
+						port.Write(new byte[] { 0xFF, 0x02, 0x00 }, 0, 3);
+						break;
+				}
+				return true;
             }
             return false;
         }
