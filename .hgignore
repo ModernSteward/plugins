@@ -246,3 +246,4 @@ PowerPointPlugin/CustomPlugin/CustomPlugin/obj/Release/CustomPlugin.csprojResolv
 PowerPointPlugin/CustomPlugin/CustomPlugin/bin/Release/CustomPlugin.vshost.exe.manifest
 PowerPointPlugin/CustomPlugin/CustomPlugin/bin/Release/CustomPlugin.vshost.exe
 PowerPointPlugin/CustomPlugin/CustomPlugin/bin/Release/CustomPlugin.exe
+*.csproj.user
