@@ -202,6 +202,11 @@ namespace ModernSteward
 
 		private void InitializeForm_FormClosing(object sender, FormClosingEventArgs e)
 		{
+            try
+            {
+                arduino.Close();
+            }
+            catch { }
 			listBoxCardsToList();
 		}
 	}

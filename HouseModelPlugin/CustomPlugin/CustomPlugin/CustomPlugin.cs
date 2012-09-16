@@ -10,248 +10,249 @@ using System.IO.Ports;
 
 namespace ModernSteward
 {
-	public class CustomPlugin : PluginFunctionality
-	{
-		private void SendCommand(string command)
-		{
-			//TODO: Implement sending data thru COM
-		}
+    public class CustomPlugin : PluginFunctionality
+    {
+        private void SendCommand(string command)
+        {
+            arduino.Write(command);
+        }
 
-		public override void Trigger(List<KeyValuePair<string, string>> semanticsToDict)
-		{
+        public override void Trigger(List<KeyValuePair<string, string>> semanticsToDict)
+        {
 
-			string room = "";
-			string status = "";
+            string room = "";
+            string status = "";
 
-			try
-			{
-				if (semanticsToDict[0].Key == "Turn the lights")
-				{
-					try
-					{
-						if (semanticsToDict[1].Key == "in the")
-						{
-							try
-							{
-								if (semanticsToDict[2].Key == "kitchen")
-								{
-									room = "K";
-									try
-									{
-										if (semanticsToDict[3].Key == "on")
-										{
-											status = "ON";
-										}
-									}
-									catch (Exception e) { }
-									try
-									{
-										if (semanticsToDict[3].Key == "off")
-										{
-											status = "OFF";
-										}
-									}
-									catch (Exception e) { }
-								}
-							}
-							catch (Exception e) { }
+            try
+            {
+                if (semanticsToDict[0].Key == "Turn the lights")
+                {
+                    try
+                    {
+                        if (semanticsToDict[1].Key == "in the")
+                        {
+                            try
+                            {
+                                if (semanticsToDict[2].Key == "kitchen")
+                                {
+                                    room = "K";
+                                    try
+                                    {
+                                        if (semanticsToDict[3].Key == "on")
+                                        {
+                                            status = "ON";
+                                        }
+                                    }
+                                    catch (Exception e) { }
+                                    try
+                                    {
+                                        if (semanticsToDict[3].Key == "off")
+                                        {
+                                            status = "OFF";
+                                        }
+                                    }
+                                    catch (Exception e) { }
+                                }
+                            }
+                            catch (Exception e) { }
 
-							try
-							{
-								if (semanticsToDict[2].Key == "bathroom")
-								{
-									room = "B";
-									try
-									{
-										if (semanticsToDict[3].Key == "on")
-										{
-											status = "ON";
-										}
-									}
-									catch (Exception e) { }
+                            try
+                            {
+                                if (semanticsToDict[2].Key == "bathroom")
+                                {
+                                    room = "B";
+                                    try
+                                    {
+                                        if (semanticsToDict[3].Key == "on")
+                                        {
+                                            status = "ON";
+                                        }
+                                    }
+                                    catch (Exception e) { }
 
-									try
-									{
-										if (semanticsToDict[3].Key == "off")
-										{
-											status = "OFF";
-										}
-									}
-									catch (Exception e) { }
+                                    try
+                                    {
+                                        if (semanticsToDict[3].Key == "off")
+                                        {
+                                            status = "OFF";
+                                        }
+                                    }
+                                    catch (Exception e) { }
 
-								}
-							}
-							catch (Exception e) { }
+                                }
+                            }
+                            catch (Exception e) { }
 
-							try
-							{
-								if (semanticsToDict[2].Key == "ceiling")
-								{
-									room = "C";
-									try
-									{
-										if (semanticsToDict[3].Key == "on")
-										{
-											status = "ON";
-										}
-									}
-									catch (Exception e) { }
+                            try
+                            {
+                                if (semanticsToDict[2].Key == "ceiling")
+                                {
+                                    room = "C";
+                                    try
+                                    {
+                                        if (semanticsToDict[3].Key == "on")
+                                        {
+                                            status = "ON";
+                                        }
+                                    }
+                                    catch (Exception e) { }
 
-									try
-									{
-										if (semanticsToDict[3].Key == "off")
-										{
-											status = "OFF";
-										}
-									}
-									catch (Exception e) { }
+                                    try
+                                    {
+                                        if (semanticsToDict[3].Key == "off")
+                                        {
+                                            status = "OFF";
+                                        }
+                                    }
+                                    catch (Exception e) { }
 
-								}
-							}
-							catch (Exception e) { }
+                                }
+                            }
+                            catch (Exception e) { }
 
-							try
-							{
-								room = "L";
-								if (semanticsToDict[2].Key == "living room")
-								{
-									try
-									{
-										if (semanticsToDict[3].Key == "on")
-										{
-											status = "ON";
-										}
-									}
-									catch (Exception e) { }
+                            try
+                            {
 
-									try
-									{
-										if (semanticsToDict[3].Key == "off")
-										{
-											status = "OFF";
-										}
-									}
-									catch (Exception e) { }
-								}
-							}
-							catch (Exception e) { }
-						}
+                                if (semanticsToDict[2].Key == "living room")
+                                {
+                                    room = "L";
+                                    try
+                                    {
+                                        if (semanticsToDict[3].Key == "on")
+                                        {
+                                            status = "ON";
+                                        }
+                                    }
+                                    catch (Exception e) { }
 
-						SendCommand("L" + status + " " + room);
+                                    try
+                                    {
+                                        if (semanticsToDict[3].Key == "off")
+                                        {
+                                            status = "OFF";
+                                        }
+                                    }
+                                    catch (Exception e) { }
+                                }
+                            }
+                            catch (Exception e) { }
+                        }
 
-					}
-					catch (Exception e) { }
-				}
+                        SendCommand("L" + status + " " + room);
 
-			}
-			catch (Exception e) { }
+                    }
+                    catch (Exception e) { }
+                }
 
-			try
-			{
-				if (semanticsToDict[0].Key == "Turn the porchlights")
-				{
-					room = "P";
-					try
-					{
-						if (semanticsToDict[1].Key == "on")
-						{
-							status = "ON";
-						}
-					}
-					catch (Exception e) { }
+            }
+            catch (Exception e) { }
 
-					try
-					{
-						if (semanticsToDict[1].Key == "off")
-						{
-							status = "OFF";
-						}
-					}
-					catch (Exception e) { }
+            try
+            {
+                if (semanticsToDict[0].Key == "Turn the porchlights")
+                {
+                    room = "P";
+                    try
+                    {
+                        if (semanticsToDict[1].Key == "on")
+                        {
+                            status = "ON";
+                        }
+                    }
+                    catch (Exception e) { }
 
-					SendCommand("L" + status + " " + room);
-				}
-			}
-			catch (Exception e) { }
+                    try
+                    {
+                        if (semanticsToDict[1].Key == "off")
+                        {
+                            status = "OFF";
+                        }
+                    }
+                    catch (Exception e) { }
 
-			try
-			{
-				if (semanticsToDict[0].Key == "Ring the alarm")
-				{
-					SendCommand("ALARM");
-				}
-			}
-			catch (Exception e) { }
+                    SendCommand("L" + status + " " + room);
+                }
+            }
+            catch (Exception e) { }
 
-			try
-			{
-				if (semanticsToDict[0].Key == "Show me the disco")
-				{
-					SendCommand("DISCO");
-				}
-			}
-			catch (Exception e) { }
-		}
+            try
+            {
+                if (semanticsToDict[0].Key == "Ring the alarm")
+                {
+                    SendCommand("ALARM");
+                }
+            }
+            catch (Exception e) { }
 
-		public event EventHandler<RFIDReceivedEventArgs> RFIDReceived;
+            try
+            {
+                if (semanticsToDict[0].Key == "Show me the disco")
+                {
+                    SendCommand("DISCO");
+                }
+            }
+            catch (Exception e) { }
+        }
 
-		public override GrammarBuilder GetGrammarBuilder()
-		{
-			Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("ModernSteward.CustomPluginGrammar.xml");
-			return ModernSteward.TreeViewToGrammarBuilderAlgorithm.CreateGrammarBuilderFromXML(stream);
-		}
+        public event EventHandler<RFIDReceivedEventArgs> RFIDReceived;
 
-		SerialPort arduino;
+        public override GrammarBuilder GetGrammarBuilder()
+        {
+            Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("ModernSteward.CustomPluginGrammar.xml");
+            return ModernSteward.TreeViewToGrammarBuilderAlgorithm.CreateGrammarBuilderFromXML(stream);
+        }
 
-		public override bool Initialize()
-		{
-			InitializeForm init = new InitializeForm(this);
-			init.ShowDialog();
-			RFIDCards = init.RFIDCards;
+        SerialPort arduino;
 
-			arduino = new SerialPort(init.COMPort, 9600);
+        public override bool Initialize()
+        {
+            InitializeForm init = new InitializeForm(this);
+            init.ShowDialog();
+            RFIDCards = init.RFIDCards;
 
-			if (!arduino.IsOpen)
-			{
-				try
-				{
-					arduino.Open();
-					arduino.DataReceived += new SerialDataReceivedEventHandler(arduino_DataReceived);
-				}
-				catch { }
-			}
+            arduino = new SerialPort(init.COMPort, 9600);
 
-			return true;
-		}
+            if (!arduino.IsOpen)
+            {
+                try
+                {
+                    arduino.Open();
+                    arduino.DataReceived += new SerialDataReceivedEventHandler(arduino_DataReceived);
+                }
+                catch { }
+            }
 
-		public override event EventHandler<GrammarUpdateRequestEventArgs> RequestGrammarUpdate;
+            return true;
+        }
 
-		public override event EventHandler<EmulateCommandEventArgs> TryToEmulateCommand;
+        public override event EventHandler<GrammarUpdateRequestEventArgs> RequestGrammarUpdate;
 
-		void arduino_DataReceived(object sender, SerialDataReceivedEventArgs e)
-		{
-			string command = arduino.ReadLine();
+        public override event EventHandler<EmulateCommandEventArgs> TryToEmulateCommand;
 
-			if (command.StartsWith("RFID")) //RFID reading
-			{
-				string cardName = command.Substring(5);
+        void arduino_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            string command = arduino.ReadLine();
 
-				var waCards = from c in RFIDCards
-							  where c.Code == cardName
-							  select c;
+            if (command.StartsWith("RFID")) //RFID reading
+            {
+                string cardName = command.Substring(5);
 
-				foreach (var card in waCards)
-				{
-					foreach (var c in card.Commands)
-					{
-						TryToEmulateCommand.Invoke(this, new EmulateCommandEventArgs(c));
-					}
-				}
-			}
-		}
+                var waCards = from c in RFIDCards
+                              where c.Code == cardName
+                              select c;
 
-		public List<RFIDCard> RFIDCards { get; set; }
+                foreach (var card in waCards)
+                {
+                    foreach (var c in card.Commands)
+                    {
+                        TryToEmulateCommand.Invoke(this, new EmulateCommandEventArgs(c));
+                    }
+                }
+            }
+        }
 
-		public ArduinoModes mode { get; set; }
-	}
+        public List<RFIDCard> RFIDCards { get; set; }
+
+        public ArduinoModes mode { get; set; }
+    }
 }
