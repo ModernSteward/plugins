@@ -177,15 +177,6 @@ namespace ModernSteward
 
             try
             {
-                if (semanticsToDict[0].Key == "Ring the alarm")
-                {
-                    SendCommand("ALARM");
-                }
-            }
-            catch (Exception e) { }
-
-            try
-            {
                 if (semanticsToDict[0].Key == "Show me the disco")
                 {
                     SendCommand("DISCO");
@@ -243,6 +234,7 @@ namespace ModernSteward
 
                 foreach (var card in waCards)
                 {
+					Console.WriteLine(card.Code);
                     foreach (var c in card.Commands)
                     {
                         TryToEmulateCommand.Invoke(this, new EmulateCommandEventArgs(c));

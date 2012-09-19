@@ -119,13 +119,6 @@
       <Optional>false</Optional>
     </Tag>
   </Nodes>
-  <Nodes Name="New Node" Text="Ring the alarm">
-    <Tag xsi:type="GrammarTreeViewTag">
-      <IsDictation>false</IsDictation>
-      <DictationContext />
-      <Optional>false</Optional>
-    </Tag>
-  </Nodes>
 <Nodes Name="New Node" Text="Show me the disco">
 	<Tag xsi:type="GrammarTreeViewTag">
       <IsDictation>false</IsDictation>
