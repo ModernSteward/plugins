@@ -46,20 +46,20 @@
 			// 
 			// labelUsername
 			// 
-			this.labelUsername.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-						| System.Windows.Forms.AnchorStyles.Left)
-						| System.Windows.Forms.AnchorStyles.Right)));
+			this.labelUsername.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelUsername.Location = new System.Drawing.Point(7, 21);
 			this.labelUsername.Name = "labelUsername";
-			this.labelUsername.Size = new System.Drawing.Size(31, 18);
+			this.labelUsername.Size = new System.Drawing.Size(59, 18);
 			this.labelUsername.TabIndex = 0;
-			this.labelUsername.Text = "Име:";
+			this.labelUsername.Text = "Username:";
 			// 
 			// textBoxUsername
 			// 
-			this.textBoxUsername.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-						| System.Windows.Forms.AnchorStyles.Left)
-						| System.Windows.Forms.AnchorStyles.Right)));
+			this.textBoxUsername.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.textBoxUsername.Location = new System.Drawing.Point(7, 45);
 			this.textBoxUsername.Name = "textBoxUsername";
 			this.textBoxUsername.Size = new System.Drawing.Size(146, 20);
@@ -68,33 +68,33 @@
 			// 
 			// labelPassword
 			// 
-			this.labelPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-						| System.Windows.Forms.AnchorStyles.Left)
-						| System.Windows.Forms.AnchorStyles.Right)));
+			this.labelPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelPassword.Location = new System.Drawing.Point(173, 21);
 			this.labelPassword.Name = "labelPassword";
-			this.labelPassword.Size = new System.Drawing.Size(47, 18);
+			this.labelPassword.Size = new System.Drawing.Size(53, 18);
 			this.labelPassword.TabIndex = 2;
-			this.labelPassword.Text = "Парола:";
+			this.labelPassword.Text = "Password";
 			// 
 			// buttonLogin
 			// 
-			this.buttonLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-						| System.Windows.Forms.AnchorStyles.Left)
-						| System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.buttonLogin.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.buttonLogin.Location = new System.Drawing.Point(174, 71);
 			this.buttonLogin.Name = "buttonLogin";
 			this.buttonLogin.Size = new System.Drawing.Size(146, 24);
 			this.buttonLogin.TabIndex = 4;
-			this.buttonLogin.Text = "Влез";
+			this.buttonLogin.Text = "Login";
 			this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
 			// 
 			// textBoxPassword
 			// 
-			this.textBoxPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-						| System.Windows.Forms.AnchorStyles.Left)
-						| System.Windows.Forms.AnchorStyles.Right)));
+			this.textBoxPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.textBoxPassword.Location = new System.Drawing.Point(174, 45);
 			this.textBoxPassword.Name = "textBoxPassword";
 			this.textBoxPassword.PasswordChar = '*';
@@ -106,9 +106,9 @@
 			// groupBoxAuth
 			// 
 			this.groupBoxAuth.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
-			this.groupBoxAuth.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-						| System.Windows.Forms.AnchorStyles.Left)
-						| System.Windows.Forms.AnchorStyles.Right)));
+			this.groupBoxAuth.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.groupBoxAuth.Controls.Add(this.buttonLogin);
 			this.groupBoxAuth.Controls.Add(this.textBoxPassword);
 			this.groupBoxAuth.Controls.Add(this.labelUsername);
@@ -119,7 +119,7 @@
 			this.groupBoxAuth.HeaderImageIndex = -1;
 			this.groupBoxAuth.HeaderImageKey = "";
 			this.groupBoxAuth.HeaderMargin = new System.Windows.Forms.Padding(0);
-			this.groupBoxAuth.HeaderText = "Оторизация";
+			this.groupBoxAuth.HeaderText = "Authorisation";
 			this.groupBoxAuth.Location = new System.Drawing.Point(12, 2);
 			this.groupBoxAuth.Name = "groupBoxAuth";
 			this.groupBoxAuth.Padding = new System.Windows.Forms.Padding(2, 18, 2, 2);
@@ -129,7 +129,7 @@
 			this.groupBoxAuth.RootElement.Padding = new System.Windows.Forms.Padding(2, 18, 2, 2);
 			this.groupBoxAuth.Size = new System.Drawing.Size(325, 104);
 			this.groupBoxAuth.TabIndex = 0;
-			this.groupBoxAuth.Text = "Оторизация";
+			this.groupBoxAuth.Text = "Authorisation";
 			// 
 			// CredentialsAsk
 			// 
@@ -143,7 +143,7 @@
 			// 
 			// 
 			this.RootElement.ApplyShapeToControl = true;
-			this.Text = "Оторизация";
+			this.Text = "Authorisation";
 			this.ThemeName = "ControlDefault";
 			((System.ComponentModel.ISupportInitialize)(this.labelUsername)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.textBoxUsername)).EndInit();
