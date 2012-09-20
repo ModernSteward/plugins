@@ -40,8 +40,6 @@ namespace ModernSteward
 								if (semanticsToDict[2].Key == "Keywords"){
 									string dictationForKeywords = semanticsToDict[2].Value;
                                     System.Diagnostics.Process.Start("http://www.google.com/search?as_q=" + dictationForKeywords);
-									var e = new EmulateCommandEventArgs("check for new mail");
-									TryToEmulateCommand.Invoke(this, e);
 								}
 							}
 							catch (Exception e) { }
