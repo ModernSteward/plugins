@@ -216,6 +216,21 @@ namespace ModernSteward
             return true;
         }
 
+		public override bool Deinitialize()
+		{
+			if(arduino.IsOpen){
+				try
+				{
+					arduino.Close();
+				}
+				catch
+				{
+					return true;
+				}
+			}
+			return true;
+		}
+
         public override event EventHandler<GrammarUpdateRequestEventArgs> RequestGrammarUpdate;
 
         public override event EventHandler<EmulateCommandEventArgs> TryToEmulateCommand;

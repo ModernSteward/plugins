@@ -48,6 +48,11 @@ namespace ModernSteward
             mail = new GMailIntegration(GmailUsername, GmailPassword);
             return mail.GetFeed();
         }
+
+		public override bool Deinitialize()
+		{
+			return true;
+		}
 		
 		public override event EventHandler<GrammarUpdateRequestEventArgs> RequestGrammarUpdate;
 

@@ -84,7 +84,14 @@ namespace ModernSteward
             }
             return true;
         }
+
+		public override bool Deinitialize()
+		{
+			return elManager.CloseThePort();
+		}
 		
 		public override event EventHandler<GrammarUpdateRequestEventArgs> RequestGrammarUpdate;
+
+		public override event EventHandler<EmulateCommandEventArgs> TryToEmulateCommand;
     }
 }

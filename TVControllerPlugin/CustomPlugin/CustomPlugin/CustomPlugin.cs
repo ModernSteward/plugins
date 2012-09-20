@@ -10,43 +10,53 @@ using System.IO.Ports;
 
 namespace ModernSteward
 {
-    public class CustomPlugin : PluginFunctionality
-    {
+	public class CustomPlugin : PluginFunctionality
+	{
 		private const int VOLUMESTEP = 3;
 
-        public override void Trigger(List<KeyValuePair<string, string>> semanticsToDict)
-        {
-            
-			try {
-				if (semanticsToDict[0].Key == "Turn the TV on"){
+		public override void Trigger(List<KeyValuePair<string, string>> semanticsToDict)
+		{
+
+			try
+			{
+				if (semanticsToDict[0].Key == "Turn the TV on")
+				{
 					SendIRCommand(ON);
 				}
 			}
 			catch (Exception e) { }
 
-			try {
-				if (semanticsToDict[0].Key == "Turn the TV off"){
+			try
+			{
+				if (semanticsToDict[0].Key == "Turn the TV off")
+				{
 					SendIRCommand(OFF);
 				}
 			}
 			catch (Exception e) { }
 
-			try {
-				if (semanticsToDict[0].Key == "Next channel"){
+			try
+			{
+				if (semanticsToDict[0].Key == "Next channel")
+				{
 					SendIRCommand(CHup);
 				}
 			}
 			catch (Exception e) { }
 
-			try {
-				if (semanticsToDict[0].Key == "Previous channel"){
+			try
+			{
+				if (semanticsToDict[0].Key == "Previous channel")
+				{
 					SendIRCommand(CHdown);
 				}
 			}
 			catch (Exception e) { }
 
-			try {
-				if (semanticsToDict[0].Key == "Volume up the TV") {
+			try
+			{
+				if (semanticsToDict[0].Key == "Volume up the TV")
+				{
 					if (WhiteNoiseOnVolume)
 					{
 						SendIRCommand(VOLup);
@@ -66,8 +76,10 @@ namespace ModernSteward
 			}
 			catch (Exception e) { }
 
-			try {
-				if (semanticsToDict[0].Key == "Volume down the TV"){
+			try
+			{
+				if (semanticsToDict[0].Key == "Volume down the TV")
+				{
 					if (WhiteNoiseOnVolume)
 					{
 						SendIRCommand(VOLdown);
@@ -87,8 +99,10 @@ namespace ModernSteward
 			}
 			catch (Exception e) { }
 
-			try {
-				if (semanticsToDict[0].Key == "Mute the TV"){
+			try
+			{
+				if (semanticsToDict[0].Key == "Mute the TV")
+				{
 					SendIRCommand(MUTE);
 				}
 			}
@@ -125,18 +139,18 @@ namespace ModernSteward
 				}
 			}
 			catch (Exception e) { }
-        }
+		}
 
 		void SendIRCommand(string command)
 		{
 			arduino.Write("SENDIR " + command);
 		}
 
-        public override GrammarBuilder GetGrammarBuilder()
-        {
-            Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("ModernSteward.CustomPluginGrammar.xml");
-            return ModernSteward.TreeViewToGrammarBuilderAlgorithm.CreateGrammarBuilderFromXML(stream);
-        }
+		public override GrammarBuilder GetGrammarBuilder()
+		{
+			Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("ModernSteward.CustomPluginGrammar.xml");
+			return ModernSteward.TreeViewToGrammarBuilderAlgorithm.CreateGrammarBuilderFromXML(stream);
+		}
 
 		private string ON;
 		private string OFF;
@@ -153,8 +167,8 @@ namespace ModernSteward
 
 		SerialPort arduino;
 
-        public override bool Initialize()
-        {
+		public override bool Initialize()
+		{
 			RecordCodes recordCodesForm = new RecordCodes();
 
 			recordCodesForm.ShowDialog();
@@ -195,8 +209,28 @@ namespace ModernSteward
 			{
 				return false;
 			}
-        }
+		}
+
+		public override bool Deinitialize()
+		{
+			if (arduino.IsOpen)
+			{
+				try
+				{
+					arduino.Close();
+					return true;
+				}
+				catch
+				{
+					return false;
+
+				}
+			}
+			return true;
+		}
 
 		public override event EventHandler<GrammarUpdateRequestEventArgs> RequestGrammarUpdate;
-    }
+
+		public override event EventHandler<EmulateCommandEventArgs> TryToEmulateCommand;
+	}
 }

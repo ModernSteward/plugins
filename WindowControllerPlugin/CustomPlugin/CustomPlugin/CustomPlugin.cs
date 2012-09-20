@@ -65,7 +65,14 @@ namespace ModernSteward
             //Returns true if the initialization of the plugin was successfull
             return true;
         }
-		
+
+		public override bool Deinitialize()
+		{
+			return true;
+		}
+
 		public override event EventHandler<GrammarUpdateRequestEventArgs> RequestGrammarUpdate;
+
+		public override event EventHandler<EmulateCommandEventArgs> TryToEmulateCommand;
     }
 }

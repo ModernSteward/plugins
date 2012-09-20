@@ -8,7 +8,7 @@ namespace ModernSteward
 	[Serializable]
 	public class RFIDCard
 	{
-		public string Code { get; set; }
+		public string Code = "";
 		public List<string> Commands;
 
 		public RFIDCard(string aCode, List<string> aCommands)

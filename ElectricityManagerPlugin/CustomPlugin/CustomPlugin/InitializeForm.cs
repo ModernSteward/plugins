@@ -18,7 +18,7 @@ namespace ModernSteward
             InitializeComponent();
 
             string com = "COM";
-            for (int i = 1; i < 9; i++)
+            for (int i = 1; i < 36; i++)
             {
                 dropDownListPorts.Items.Add(com+i.ToString());
             }

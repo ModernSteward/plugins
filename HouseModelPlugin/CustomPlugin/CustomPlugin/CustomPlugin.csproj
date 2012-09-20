@@ -70,6 +70,7 @@
   <ItemGroup>
     <EmbeddedResource Include="CustomPluginGrammar.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="InitializeForm.resx">
       <DependentUpon>InitializeForm.cs</DependentUpon>

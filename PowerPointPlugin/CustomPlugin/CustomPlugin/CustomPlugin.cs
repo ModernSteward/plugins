@@ -95,7 +95,14 @@ namespace ModernSteward
             this.PresentationFilePath = init.PresentationFilePath;
             return true;
         }
+
+		public override bool Deinitialize()
+		{
+			return true;
+		}
 		
 		public override event EventHandler<GrammarUpdateRequestEventArgs> RequestGrammarUpdate;
+
+		public override event EventHandler<EmulateCommandEventArgs> TryToEmulateCommand;
     }
 }

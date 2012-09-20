@@ -143,25 +143,25 @@ namespace ModernSteward
 			if (saveFile.ShowDialog() == DialogResult.OK)
 			{
 				fileName = saveFile.FileName;
-			}
 
-			listBoxCardsToList();
+				listBoxCardsToList();
 
-			Stream stream = null;
-			try
-			{
-				IFormatter formatter = new BinaryFormatter();
-				stream = new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.None);
-				formatter.Serialize(stream, RFIDCards);
-			}
-			catch
-			{
-				// do nothing, just ignore any possible errors
-			}
-			finally
-			{
-				if (null != stream)
-					stream.Close();
+				Stream stream = null;
+				try
+				{
+					IFormatter formatter = new BinaryFormatter();
+					stream = new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.None);
+					formatter.Serialize(stream, RFIDCards);
+				}
+				catch
+				{
+					// do nothing, just ignore any possible errors
+				}
+				finally
+				{
+					if (null != stream)
+						stream.Close();
+				}
 			}
 		}
 
@@ -173,31 +173,32 @@ namespace ModernSteward
 			if (openFile.ShowDialog() == DialogResult.OK)
 			{
 				fileName = openFile.FileName;
-			}
 
-			Stream stream = null;
-			try
-			{
-				IFormatter formatter = new BinaryFormatter();
-				stream = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.None);
-				stream.Position = 0;
-				RFIDCards = (List<RFIDCard>)formatter.Deserialize(stream);
-
-				listBoxCards.Items.Clear();
-				foreach (var card in RFIDCards)
+				Stream stream = null;
+				try
 				{
-					AddRFIDCard(card);
+					IFormatter formatter = new BinaryFormatter();
+					stream = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.None);
+					stream.Position = 0;
+					RFIDCards = (List<RFIDCard>)formatter.Deserialize(stream);
+
+					listBoxCards.Items.Clear();
+					foreach (var card in RFIDCards)
+					{
+						AddRFIDCard(card);
+					}
 				}
-			}
-			catch
-			{
-				// do nothing, just ignore any possible errors
-			}
-			finally
-			{
-				if (null != stream)
-					stream.Close();
-			}
+				catch (Exception ex)
+				{
+					MessageBox.Show(ex.Message);
+					// do nothing, just ignore any possible errors
+				}
+				finally
+				{
+					if (null != stream)
+						stream.Close();
+				}
+			}	
 		}
 
 		private void InitializeForm_FormClosing(object sender, FormClosingEventArgs e)
