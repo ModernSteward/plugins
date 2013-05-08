@@ -1,0 +1,2 @@
+play some music
+stop the music
